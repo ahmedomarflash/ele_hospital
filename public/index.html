@@ -1,1 +1,336 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+  <title>Healthy Parental</title>
+
+  <!-- Import Arabic font Cairo from Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* Reset and base styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #e0f7f7;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+      overflow-x: hidden;
+    }
+
+    /* Glowing Header */
+    header h1 {
+      font-size: 3.8rem;
+      margin-bottom: 40px;
+      color: #00fff7;
+      text-shadow:
+        0 0 10px #00fff7,
+        0 0 20px #00fff7,
+        0 0 40px #00fff7,
+        0 0 80px #00fff7;
+      letter-spacing: 3px;
+      user-select: none;
+    }
+
+    /* Layout: images columns + center text */
+    .content-with-images {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      max-width: 900px;
+      margin-bottom: 50px;
+      user-select: none;
+    }
+
+    .side-column {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .side-column img {
+      width: 260px;
+      height: 160px;
+      border-radius: 16px;
+      object-fit: cover;
+      box-shadow:
+        0 0 15px #00fff7aa,
+        0 0 30px #00fff7cc;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      cursor: pointer;
+    }
+
+    .side-column img:hover {
+      transform: scale(1.05);
+      box-shadow:
+        0 0 25px #00fff7dd,
+        0 0 50px #00fff7ee;
+    }
+
+    .center-text {
+      max-width: 380px;
+      font-size: 1.2rem;
+      line-height: 1.7;
+      font-weight: 600;
+      text-align: center;
+      color: #aaf0f0;
+      padding: 15px;
+      border: 2px solid #00fff7aa;
+      border-radius: 14px;
+      background: rgba(0, 255, 247, 0.1);
+    }
+
+    /* Buttons container */
+    .buttons {
+      margin-bottom: 35px;
+      text-align: center;
+    }
+
+    button {
+      background: linear-gradient(135deg, #00fff7, #00bcd4);
+      border: none;
+      padding: 15px 40px;
+      margin: 0 15px;
+      font-size: 20px;
+      font-weight: 700;
+      border-radius: 12px;
+      color: #002f2f;
+      cursor: pointer;
+      box-shadow:
+        0 0 12px #00fff7bb,
+        0 0 20px #00bcd4cc;
+      transition: background 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+      user-select: none;
+    }
+
+    button:hover {
+      background: linear-gradient(135deg, #00bcd4, #00fff7);
+      color: #000;
+      box-shadow:
+        0 0 25px #00fff7ff,
+        0 0 45px #00bcd4ff;
+    }
+
+    /* Forms styles */
+    form {
+      background: rgba(0, 255, 247, 0.1);
+      box-shadow:
+        0 0 20px #00fff7bb;
+      border-radius: 16px;
+      padding: 30px 25px;
+      max-width: 350px;
+      width: 100%;
+      display: none;
+      margin: 0 auto 50px;
+      color: #e0f7f7;
+      text-align: right;
+      user-select: none;
+    }
+
+    form.active {
+      display: block;
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(15px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 600;
+      font-size: 18px;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px 15px;
+      border-radius: 12px;
+      border: none;
+      font-size: 17px;
+      margin-bottom: 22px;
+      background-color: #002f2f;
+      color: #aaf0f0;
+      box-shadow: inset 0 0 10px #00fff7cc;
+      transition: box-shadow 0.3s ease;
+    }
+
+    input[type="email"]:focus,
+    input[type="password"]:focus {
+      outline: none;
+      box-shadow: 0 0 20px #00fff7ff;
+      background-color: #004c4c;
+      color: #e0f7f7;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      background: linear-gradient(135deg, #00bcd4, #00fff7);
+      border: none;
+      padding: 14px 0;
+      font-size: 20px;
+      font-weight: 700;
+      border-radius: 14px;
+      cursor: pointer;
+      color: #002f2f;
+      box-shadow:
+        0 0 15px #00fff7cc;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
+    }
+
+    input[type="submit"]:hover {
+      background: linear-gradient(135deg, #00fff7, #00bcd4);
+      box-shadow:
+        0 0 30px #00fff7ff,
+        0 0 50px #00bcd4ff;
+    }
+
+    /* Responsive */
+    @media (max-width: 720px) {
+      .content-with-images {
+        flex-direction: column;
+        gap: 25px;
+      }
+
+      .side-column {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+
+      .side-column img {
+        width: 90vw;
+        height: auto;
+        max-height: 220px;
+      }
+
+      .center-text {
+        max-width: 90vw;
+        font-size: 1rem;
+        padding: 12px;
+      }
+
+      .buttons button {
+        width: 130px;
+        margin: 10px 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Healthy Parental</h1>
+  </header>
+
+  <main>
+    <!-- Images and center text -->
+    <section class="content-with-images" aria-label="Healthy images with info">
+      
+      <div class="side-column" aria-label="Left images">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=500&q=90" alt="Healthy Image 1" />
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=500&q=90" alt="Healthy Image 2" />
+      </div>
+
+      <div class="center-text" aria-label="Health information">
+        <p>
+          Good health is essential for a happy life. Maintaining a balanced diet, regular exercise, and sufficient rest can improve your well-being and energy. Take care of your body and mind daily.
+        </p>
+      </div>
+
+      <div class="side-column" aria-label="Right images">
+        <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=500&q=90" alt="Healthy Image 3" />
+        <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=500&q=90" alt="Healthy Image 4" />
+      </div>
+    </section>
+
+    <!-- Buttons -->
+    <section class="buttons">
+      <button id="signInBtn">Sign In</button>
+      <button id="signUpBtn">Sign Up</button>
+    </section>
+
+    <!-- Sign In Form -->
+    <form id="signInForm" aria-label="Sign In Form">
+      <label for="emailSignIn">Email Address</label>
+      <input type="email" id="emailSignIn" name="email" placeholder="example@mail.com" required />
+
+      <label for="passwordSignIn">Password</label>
+      <input type="password" id="passwordSignIn" name="password" placeholder="••••••••" required />
+
+      <input type="submit" value="Submit" />
+    </form>
+
+    <!-- Sign Up Form -->
+    <form id="signUpForm" aria-label="Sign Up Form">
+      <label for="emailSignUp">Email Address</label>
+      <input type="email" id="emailSignUp" name="email" placeholder="example@mail.com" required />
+
+      <label for="passwordSignUp">Password</label>
+      <input type="password" id="passwordSignUp" name="password" placeholder="••••••••" required />
+
+      <label for="confirmPasswordSignUp">Confirm Password</label>
+      <input type="password" id="confirmPasswordSignUp" name="confirmPassword" placeholder="••••••••" required />
+
+      <input type="submit" value="Submit" />
+    </form>
+  </main>
+
+  <script>
+    // Elements references
+    const signInBtn = document.getElementById('signInBtn');
+    const signUpBtn = document.getElementById('signUpBtn');
+    const signInForm = document.getElementById('signInForm');
+    const signUpForm = document.getElementById('signUpForm');
+
+    // Show sign-in form and hide sign-up
+    signInBtn.addEventListener('click', () => {
+      signInForm.classList.add('active');
+      signUpForm.classList.remove('active');
+      signInForm.scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // Show sign-up form and hide sign-in
+    signUpBtn.addEventListener('click', () => {
+      signUpForm.classList.add('active');
+      signInForm.classList.remove('active');
+      signUpForm.scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // Sign In submit
+    signInForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Successfully signed in!');
+    });
+
+    // Sign Up submit with password confirmation check
+    signUpForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const password = document.getElementById('passwordSignUp').value;
+      const confirmPassword = document.getElementById('confirmPasswordSignUp').value;
+      if (password !== confirmPassword) {
+        alert('Passwords do not match. Please try again.');
+        return;
+      }
+      alert('Successfully signed up!');
+    });
+  </script>
+</body>
+</html>
