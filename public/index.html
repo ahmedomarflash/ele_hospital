@@ -6,104 +6,128 @@
   <title>Healthy Parental</title>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600&display=swap" rel="stylesheet" />
   <style>
-    * {
-      box-sizing: border-box;
+    html, body {
+      height: 100%;
       margin: 0;
       padding: 0;
       font-family: 'Cairo', sans-serif;
     }
     body {
       min-height: 100vh;
-      background: radial-gradient(circle at center, #203a43, #0f2027);
+      background: linear-gradient(135deg, #232526 0%, #414345 100%);
+      background-attachment: fixed;
       color: #e0f7f7;
       overflow-x: hidden;
+      overflow-y: auto;
       position: relative;
+      padding-top: 70px;
+    }
+    /* Bubbles animation */
+    #bubbles-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .bubble {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.16;
+      background: radial-gradient(circle at 60% 40%, #00fff7 0%, #00bcd4 80%, transparent 100%);
+      animation: floatBubble 18s linear infinite;
+      pointer-events: none;
+      filter: blur(1.5px);
+      mix-blend-mode: lighten;
+    }
+    .bubble2 {
+      background: radial-gradient(circle at 40% 60%, #fff 0%, #00fff7 60%, transparent 100%);
+      opacity: 0.10;
+      filter: blur(3px);
+      mix-blend-mode: lighten;
+    }
+    @keyframes floatBubble {
+      0% {
+        transform: translateY(100vh) scale(1);
+        opacity: 0.16;
+      }
+      80% {
+        opacity: 0.22;
+      }
+      100% {
+        transform: translateY(-120vh) scale(1.2);
+        opacity: 0;
+      }
     }
     #glow-overlay {
       position: fixed;
       inset: 0;
       pointer-events: none;
-      z-index: 0;
+      z-index: 1;
     }
-    #topBar {
-      width: 100vw;
-      background: rgba(0, 47, 47, 0.95);
-      box-shadow: 0 2px 16px #00fff7aa;
-      position: fixed;
-      top: 0; left: 0;
-      z-index: 100;
-      padding: 0;
-      display: none;
-    }
-    #topBar .bar-content {
+    /* Centered box for all content */
+    #mainBox {
+      position: relative;
+      z-index: 2;
+      max-width: 1050px;
+      margin: 90px auto 40px auto;
+      background: rgba(30, 40, 45, 0.97);
+      border-radius: 28px;
+      box-shadow: 0 0 40px #00fff7bb, 0 8px 32px #002f2f44;
+      padding: 40px 32px 32px 32px;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: flex-end;
-      gap: 18px;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 10px 24px;
-    }
-    #userAvatar {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      background: #e0f7f7;
-      object-fit: cover;
-      border: 2px solid #00fff7;
-    }
-    #userEmail {
-      color: #aaf0f0;
-      font-size: 1.1rem;
-      font-weight: 700;
-      direction: ltr;
-      margin-left: 10px;
-    }
-    #topBar button {
-      background: linear-gradient(135deg, #00bcd4, #00fff7);
-      border: none;
-      padding: 7px 18px;
-      font-size: 1rem;
-      font-weight: 700;
-      border-radius: 10px;
-      cursor: pointer;
-      color: #002f2f;
-      margin-left: 8px;
-      box-shadow: 0 0 8px #00fff7cc;
-      transition: background 0.2s;
-    }
-    #topBar button:hover {
-      background: linear-gradient(135deg, #00fff7, #00bcd4);
+      min-height: 0;
     }
     #authCenter {
-      position: fixed;
-      inset: 0;
+      position: static;
       display: flex;
       align-items: center;
       justify-content: center;
       z-index: 10;
-      background: transparent;
+      background: none;
+      width: 100%;
+      margin-bottom: 30px;
     }
     #authForm {
-      background: rgba(0, 255, 247, 0.1);
-      box-shadow: 0 0 20px #00fff7bb;
-      border-radius: 16px;
-      padding: 30px 25px;
-      max-width: 350px;
+      background: rgba(0, 47, 47, 0.97);
+      box-shadow: 0 0 32px #00fff7bb, 0 8px 32px #002f2f44;
+      border-radius: 22px;
+      padding: 38px 32px 28px 32px;
+      max-width: 370px;
       width: 100%;
       text-align: right;
       z-index: 11;
       position: relative;
+      font-family: 'Cairo', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: center;
+      margin-left: 0;
+      margin-right: 0;
+      min-height: 0;
+    }
+    #authForm h2 {
+      text-align: center;
+      font-family: 'Cairo', sans-serif;
+      font-weight: 700;
+      color: #00fff7;
+      margin-bottom: 18px;
+      font-size: 2rem;
     }
     label {
       display: block;
       margin-bottom: 10px;
       font-weight: 600;
       font-size: 18px;
+      font-family: 'Cairo', sans-serif;
     }
     input[type="email"],
     input[type="password"] {
       width: 100%;
+      box-sizing: border-box;
       padding: 12px 15px;
       border-radius: 12px;
       border: none;
@@ -112,6 +136,10 @@
       background-color: #002f2f;
       color: #aaf0f0;
       box-shadow: inset 0 0 10px #00fff7cc;
+      font-family: 'Cairo', sans-serif;
+      margin-right: 0;
+      margin-left: 0;
+      transition: background 0.2s, color 0.2s;
     }
     input[type="email"]:focus,
     input[type="password"]:focus {
@@ -132,6 +160,8 @@
       color: #002f2f;
       margin-bottom: 10px;
       box-shadow: 0 0 15px #00fff7cc;
+      font-family: 'Cairo', sans-serif;
+      transition: background 0.2s;
     }
     button:hover {
       background: linear-gradient(135deg, #00fff7, #00bcd4);
@@ -150,6 +180,7 @@
       font-size: 16px;
       box-shadow: 0 0 8px #00fff7cc;
       transition: background 0.2s;
+      font-family: 'Cairo', sans-serif;
     }
     #googleSignInBtn:hover {
       background: #e0f7f7;
@@ -165,6 +196,67 @@
       font-size:14px;
       min-height: 18px;
       text-align: center;
+      font-family: 'Cairo', sans-serif;
+    }
+    .or-divider {
+      margin: 16px 0 8px 0;
+      text-align: center;
+      color: #aaa;
+      font-family: 'Cairo', sans-serif;
+    }
+    #topBar {
+      width: 100vw;
+      background: #002f2f;
+      box-shadow: 0 2px 16px #00fff7aa;
+      position: fixed;
+      top: 0; left: 0;
+      z-index: 100;
+      padding: 0;
+      height: 70px;
+      display: none;
+    }
+    #topBar .bar-content {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 18px;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 10px 24px;
+      height: 100%;
+    }
+    #userAvatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #e0f7f7;
+      object-fit: cover;
+      border: 2px solid #00fff7;
+    }
+    #userEmail {
+      color: #aaf0f0;
+      font-size: 1.1rem;
+      font-weight: 700;
+      direction: ltr;
+      margin-left: 10px;
+      font-family: 'Cairo', sans-serif;
+    }
+    #topBar button {
+      background: linear-gradient(135deg, #00bcd4, #00fff7);
+      border: none;
+      padding: 7px 18px;
+      font-size: 1rem;
+      font-weight: 700;
+      border-radius: 10px;
+      cursor: pointer;
+      color: #002f2f;
+      margin-left: 8px;
+      box-shadow: 0 0 8px #00fff7cc;
+      transition: background 0.2s;
+      font-family: 'Cairo', sans-serif;
+    }
+    #topBar button:hover {
+      background: linear-gradient(135deg, #00fff7, #00bcd4);
     }
     header, main {
       opacity: 0;
@@ -185,6 +277,7 @@
       text-shadow: 0 0 10px #00fff7, 0 0 20px #00fff7, 0 0 40px #00fff7, 0 0 80px #00fff7;
       letter-spacing: 3px;
       text-align: center;
+      font-family: 'Cairo', sans-serif;
     }
     .content-with-images {
       display: flex;
@@ -223,11 +316,90 @@
       border: 2px solid #00fff7aa;
       border-radius: 14px;
       background: rgba(0, 255, 247, 0.1);
+      font-family: 'Cairo', sans-serif;
+    }
+    /* Modal styles */
+    #changePassModal {
+      display: none;
+      position: fixed;
+      z-index: 200;
+      left: 0; top: 0; width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.4);
+      align-items: center;
+      justify-content: center;
+    }
+    #changePassModal .modal-content {
+      background: #002f2f;
+      color: #e0f7f7;
+      padding: 30px 24px 20px 24px;
+      border-radius: 16px;
+      box-shadow: 0 0 30px #00fff7cc;
+      min-width: 320px;
+      max-width: 90vw;
+      text-align: center;
+      position: relative;
+      font-family: 'Cairo', sans-serif;
+    }
+    #changePassModal input[type="password"] {
+      margin-bottom: 18px;
+      background: #18344a;
+      color: #e0f7f7;
+      border-radius: 8px;
+      border: none;
+      padding: 10px;
+      width: 90%;
+      font-size: 1rem;
+      font-family: 'Cairo', sans-serif;
+    }
+    #closeModalBtn {
+      position: absolute;
+      left: 12px;
+      top: 12px;
+      background: none;
+      border: none;
+      color: #00fff7;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    #changePassModal button {
+      width: auto;
+      min-width: 120px;
+      margin: 0 8px;
+      font-family: 'Cairo', sans-serif;
+    }
+    @media (max-width: 1200px) {
+      #mainBox {
+        max-width: 98vw;
+        padding: 20px 2vw 20px 2vw;
+      }
+    }
+    @media (max-width: 900px) {
+      #mainBox {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 0 10px 0;
+      }
+      #authCenter {
+        justify-content: center;
+      }
+    }
+    @media (max-width: 600px) {
+      #topBar .bar-content { padding: 10px 5px; }
+      #changePassModal .modal-content { min-width: 90vw; }
+      #mainBox { padding: 10px 0 10px 0; }
+      #authForm { padding: 22px 6vw 18px 6vw; }
+      #authForm input[type="email"],
+      #authForm input[type="password"] {
+        margin-right: 0;
+        margin-left: 0;
+      }
+      #authCenter { justify-content: center; }
     }
   </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 </head>
 <body>
+<div id="bubbles-bg"></div>
 <div id="glow-overlay"></div>
 
 <!-- Top Bar (hidden by default) -->
@@ -240,45 +412,76 @@
   </div>
 </nav>
 
-<!-- Centered Auth Wrapper -->
-<div id="authCenter">
-  <form id="authForm">
-    <label for="email">البريد الإلكتروني</label>
-    <input type="email" id="email" placeholder="example@mail.com" required />
-    <label for="password">كلمة المرور</label>
-    <input type="password" id="password" placeholder="••••••••" required />
-    <button id="googleSignInBtn" type="button">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google">
-      <span>الدخول عبر Google</span>
-    </button>
-    <button id="signInBtn" type="button">تسجيل الدخول</button>
-    <button id="signUpBtn" type="button">إنشاء حساب</button>
-    <div id="message"></div>
-  </form>
+<!-- Change Password Modal -->
+<div id="changePassModal">
+  <div class="modal-content">
+    <button id="closeModalBtn" title="إغلاق">&times;</button>
+    <h3>تغيير كلمة المرور</h3>
+    <p>أدخل كلمة المرور الجديدة:</p>
+    <input type="password" id="newPasswordInput" placeholder="كلمة مرور جديدة" minlength="6" required />
+    <div id="changePassMsg" style="color:#ff8080;min-height:18px;margin-bottom:10px;"></div>
+    <button id="saveNewPassBtn" type="button">حفظ</button>
+  </div>
 </div>
 
-<header>
-  <h1>Healthy Parental</h1>
-</header>
-<main>
-  <section class="content-with-images">
-    <div class="side-column">
-      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=500&q=90" />
-      <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=500&q=90" />
+<!-- Main Box for all content -->
+<div id="mainBox">
+  <div id="authCenter">
+    <form id="authForm">
+      <h2>تسجيل الدخول</h2>
+      <label for="email">البريد الإلكتروني</label>
+      <input type="email" id="email" placeholder="example@mail.com" required />
+      <label for="password">كلمة المرور</label>
+      <input type="password" id="password" placeholder="••••••••" required />
+      <button id="signInBtn" type="button">تسجيل الدخول</button>
+      <button id="signUpBtn" type="button">إنشاء حساب</button>
+      <div class="or-divider">أو</div>
+      <button id="googleSignInBtn" type="button">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google">
+        <span>الدخول عبر Google</span>
+      </button>
+      <div id="message"></div>
+    </form>
+  </div>
+
+  <!-- Choose Role Page (hidden by default) -->
+  <div id="chooseRolePage" style="display:none; flex-direction:column; align-items:center; justify-content:center; min-height:400px;">
+    <h2 style="color:#00fff7; margin-bottom:30px; font-family:'Cairo',sans-serif;">اختر نوع الحساب</h2>
+    <div style="display:flex; flex-direction:column; align-items:center; gap:40px;">
+      <div style="display:flex; flex-direction:column; align-items:center;">
+        <img src="https://cdn-icons-png.flaticon.com/512/6073/6073873.png" alt="دكتور" style="width:120px; height:120px; border-radius:50%; box-shadow:0 0 20px #00fff7aa; margin-bottom:10px; background:#fff;">
+        <button id="chooseDoctorBtn" style="width:180px; font-size:1.3rem; margin-bottom:0;">دكتور</button>
+      </div>
+      <div style="display:flex; flex-direction:column; align-items:center;">
+        <img src="https://cdn-icons-png.flaticon.com/512/2922/2922510.png" alt="مريض" style="width:120px; height:120px; border-radius:50%; box-shadow:0 0 20px #00fff7aa; margin-bottom:10px; background:#fff;">
+        <button id="choosePatientBtn" style="width:180px; font-size:1.3rem;">مريض</button>
+      </div>
     </div>
-    <div class="center-text">
-      Good health is essential for a happy life. Maintaining a balanced diet, regular exercise, and sufficient rest can improve your well-being and energy.
-    </div>
-    <div class="side-column">
-      <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=500&q=90" />
-      <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=500&q=90" />
-    </div>
-  </section>
-</main>
+  </div>
+
+  <header>
+    <h1>Healthy Parental</h1>
+  </header>
+  <main>
+    <section class="content-with-images">
+      <div class="side-column">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=500&q=90" />
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=500&q=90" />
+      </div>
+      <div class="center-text">
+        Good health is essential for a happy life. Maintaining a balanced diet, regular exercise, and sufficient rest can improve your well-being and energy.
+      </div>
+      <div class="side-column">
+        <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=500&q=90" />
+        <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=500&q=90" />
+      </div>
+    </section>
+  </main>
+</div>
 
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
-  import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, signOut, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
+  import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, signOut, GoogleAuthProvider, signInWithPopup, updatePassword } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyAtb4EIuHEZF-IoAWYiq3zE-qYuUvP4Wgo",
@@ -308,17 +511,17 @@
   const signOutBtn = document.getElementById('signOutBtn');
   const changePassBtn = document.getElementById('changePassBtn');
 
-  function getGoogleAvatar(email, photoURL) {
-    // Use Firebase photoURL if available (Google sign-in)
+  // Modal elements
+  const changePassModal = document.getElementById('changePassModal');
+  const closeModalBtn = document.getElementById('closeModalBtn');
+  const saveNewPassBtn = document.getElementById('saveNewPassBtn');
+  const newPasswordInput = document.getElementById('newPasswordInput');
+  const changePassMsg = document.getElementById('changePassMsg');
+
+  function getAvatar(email, photoURL) {
     if (photoURL) return photoURL;
-    // For Gmail, show Google "G" logo
-    if (email.endsWith('@gmail.com')) {
-      return "https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg";
-    }
-    // Fallback to Gravatar
-    const md5 = email => {
-      return window.CryptoJS.MD5(email.trim().toLowerCase()).toString();
-    };
+    // Use Gravatar for all, fallback to ui-avatars for non-gravatar
+    const md5 = email => window.CryptoJS.MD5(email.trim().toLowerCase()).toString();
     return `https://www.gravatar.com/avatar/${md5(email)}?d=identicon`;
   }
 
@@ -352,17 +555,31 @@
 
   function showContent() {
     authCenter.style.display = 'none';
-    header.classList.add('visible');
-    main.classList.add('visible');
+    // Show choose role page instead of main content
+    document.getElementById('chooseRolePage').style.display = 'flex';
+    header.classList.remove('visible');
+    main.classList.remove('visible');
     topBar.style.display = 'block';
 
     // Show user info
     const user = auth.currentUser;
     if (user) {
       userEmailSpan.textContent = user.email || '';
-      userAvatar.src = getGoogleAvatar(user.email || '', user.photoURL || '');
+      userAvatar.src = getAvatar(user.email || '', user.photoURL || '');
     }
   }
+
+  // Role selection logic
+  document.getElementById('chooseDoctorBtn').onclick = function() {
+    document.getElementById('chooseRolePage').style.display = 'none';
+    header.classList.add('visible');
+    main.classList.add('visible');
+  };
+  document.getElementById('choosePatientBtn').onclick = function() {
+    document.getElementById('chooseRolePage').style.display = 'none';
+    header.classList.add('visible');
+    main.classList.add('visible');
+  };
 
   // Sign out
   if (signOutBtn) {
@@ -373,27 +590,86 @@
         main.classList.remove('visible');
         authCenter.style.display = 'flex';
         document.getElementById('authForm').reset();
+        document.getElementById('chooseRolePage').style.display = 'none';
       });
     };
   }
 
-  // Change password
+  // Change password modal logic
   if (changePassBtn) {
     changePassBtn.onclick = () => {
+      changePassMsg.textContent = '';
+      newPasswordInput.value = '';
+      changePassModal.style.display = 'flex';
+      newPasswordInput.focus();
+    };
+  }
+  if (closeModalBtn) {
+    closeModalBtn.onclick = () => {
+      changePassModal.style.display = 'none';
+    };
+  }
+  if (saveNewPassBtn) {
+    saveNewPassBtn.onclick = async () => {
       const user = auth.currentUser;
-      if (user && user.email) {
-        sendPasswordResetEmail(auth, user.email)
-          .then(() => alert('تم إرسال رابط تغيير كلمة المرور إلى بريدك الإلكتروني.'))
-          .catch(err => alert('حدث خطأ: ' + err.message));
+      const newPass = newPasswordInput.value;
+      changePassMsg.textContent = '';
+      if (!newPass || newPass.length < 6) {
+        changePassMsg.textContent = 'كلمة المرور يجب أن تكون 6 أحرف أو أكثر.';
+        return;
+      }
+      try {
+        await updatePassword(user, newPass);
+        changePassMsg.style.color = "#00fff7";
+        changePassMsg.textContent = "تم تغيير كلمة المرور بنجاح!";
+        setTimeout(() => {
+          changePassModal.style.display = 'none';
+          changePassMsg.style.color = "#ff8080";
+        }, 1200);
+      } catch (err) {
+        if (err.code === "auth/requires-recent-login") {
+          changePassMsg.textContent = "يجب تسجيل الدخول مجددًا لتغيير كلمة المرور.";
+        } else {
+          changePassMsg.textContent = err.message;
+        }
       }
     };
   }
+  // Close modal on outside click
+  window.onclick = function(event) {
+    if (event.target === changePassModal) {
+      changePassModal.style.display = "none";
+    }
+  };
 
   // Glow mouse effect
   const glowOverlay = document.getElementById('glow-overlay');
   document.addEventListener('mousemove', e => {
-    glowOverlay.style.background = `radial-gradient(circle at ${e.clientX}px ${e.clientY}px, rgba(0,255,247,0.4) 0%, transparent 15%)`;
+    glowOverlay.style.background = `radial-gradient(circle at ${e.clientX}px ${e.clientY}px, rgba(0,255,247,0.2) 0%, transparent 15%)`;
   });
+
+  // Bubbles animation (improved: more variety, some white, some blue, different speeds)
+  const bubblesBg = document.getElementById('bubbles-bg');
+  function randomBetween(a, b) {
+    return Math.random() * (b - a) + a;
+  }
+  function createBubble() {
+    const bubble = document.createElement('div');
+    // Randomly assign a class for variety
+    bubble.className = Math.random() > 0.5 ? 'bubble' : 'bubble bubble2';
+    const size = randomBetween(40, 120);
+    bubble.style.width = `${size}px`;
+    bubble.style.height = `${size}px`;
+    bubble.style.left = `${randomBetween(2, 98)}vw`;
+    bubble.style.animationDuration = `${randomBetween(14, 28)}s`;
+    bubble.style.animationDelay = `${randomBetween(0, 14)}s`;
+    bubblesBg.appendChild(bubble);
+    bubble.addEventListener('animationend', () => {
+      bubble.remove();
+      createBubble();
+    });
+  }
+  for (let i = 0; i < 18; i++) createBubble();
 </script>
 </body>
 </html>
