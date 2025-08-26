@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl"><head>
+<html lang="ar" dir="rtl">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Healthy Parental</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     html, body {
       height: 100%;
@@ -459,6 +460,101 @@
       font-weight: bold;
       font-size: 0.9rem;
     }
+    
+    /* Patient Page Styles */
+    #patientPage {
+      display: none;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    #patientForm {
+      width: 100%;
+    }
+    .form-section {
+      margin-bottom: 30px;
+    }
+    .form-section h1 {
+      color: #00fff7;
+      text-shadow: 0 0 10px #00fff7;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    #patientForm label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #aaf0f0;
+    }
+    input[type="text"],
+    input[type="date"],
+    input[type="tel"],
+    input[type="time"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border-radius: 12px;
+      border: none;
+      font-size: 16px;
+      background-color: #002f2f;
+      color: #e0f7f7;
+      box-shadow: inset 0 0 10px #00fff7cc;
+      font-family: 'Cairo', sans-serif;
+      transition: all 0.3s;
+    }
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      box-shadow: 0 0 20px #00fff7ff;
+      background-color: #004c4c;
+    }
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+    select {
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2300fff7'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 15px center;
+      background-size: 20px;
+    }
+    hr {
+      border: none;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #00fff7aa, transparent);
+      margin: 40px 0;
+    }
+    #patientForm button[type="submit"] {
+      width: 100%;
+      background: linear-gradient(135deg, #00bcd4, #00fff7);
+      border: none;
+      padding: 16px 0;
+      font-size: 20px;
+      font-weight: 700;
+      border-radius: 14px;
+      cursor: pointer;
+      color: #002f2f;
+      margin-top: 20px;
+      box-shadow: 0 0 15px #00fff7cc;
+      font-family: 'Cairo', sans-serif;
+      transition: all 0.3s;
+    }
+    #patientForm button[type="submit"]:hover {
+      background: linear-gradient(135deg, #00fff7, #00bcd4);
+      box-shadow: 0 0 30px #00fff7ff;
+    }
+
     @media (max-width: 1200px) {
       #mainBox {
         max-width: 98vw;
@@ -477,6 +573,10 @@
       #marketGrid {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       }
+      #patientPage {
+        max-width: 90%;
+        padding: 30px 20px;
+      }
     }
     @media (max-width: 600px) {
       #topBar .bar-content { padding: 10px 5px; }
@@ -493,6 +593,12 @@
         grid-template-columns: 1fr 1fr;
         gap: 20px;
       }
+      #patientPage {
+        padding: 25px 15px;
+      }
+      .form-section h1 {
+        font-size: 1.5rem;
+      }
     }
     @media (max-width: 480px) {
       #marketGrid {
@@ -500,11 +606,11 @@
       }
     }
   </style>
-  <script src="https://apis.google.com/_/scs/abc-static/_/js/k=gapi.lb.ar.geQ2MSC8h8U.O/m=gapi_iframes/rt=j/sv=1/d=1/ed=1/rs=AHpOoo9X0i60BRl87P2jp0GahTXbFWoGhQ/cb=gapi.loaded_0?le=scs" async=""></script><script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
-<script src="https://apis.google.com/js/api.js?onload=__iframefcb213860" type="text/javascript" charset="UTF-8" gapi_processed="true"></script></head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+</head>
 <body>
-<div id="bubbles-bg"><div class="bubble" style="width: 65.2089px; height: 65.2089px; left: 54.7449vw; animation-duration: 15.2514s; animation-delay: 6.39517s;"></div><div class="bubble bubble2" style="width: 87.3528px; height: 87.3528px; left: 47.0741vw; animation-duration: 27.9116s; animation-delay: 2.98625s;"></div><div class="bubble" style="width: 113.534px; height: 113.534px; left: 24.9649vw; animation-duration: 24.0094s; animation-delay: 3.8913s;"></div><div class="bubble" style="width: 50.7964px; height: 50.7964px; left: 62.916vw; animation-duration: 24.6961s; animation-delay: 13.6066s;"></div><div class="bubble" style="width: 77.6721px; height: 77.6721px; left: 79.605vw; animation-duration: 14.6053s; animation-delay: 0.372336s;"></div><div class="bubble bubble2" style="width: 105.05px; height: 105.05px; left: 64.7959vw; animation-duration: 17.7263s; animation-delay: 1.85268s;"></div><div class="bubble" style="width: 55.7469px; height: 55.7469px; left: 75.5752vw; animation-duration: 15.3666s; animation-delay: 11.2218s;"></div><div class="bubble bubble2" style="width: 57.7898px; height: 57.7898px; left: 19.2417vw; animation-duration: 24.6571s; animation-delay: 5.43439s;"></div><div class="bubble bubble2" style="width: 64.665px; height: 64.665px; left: 89.6606vw; animation-duration: 14.2044s; animation-delay: 13.3682s;"></div><div class="bubble bubble2" style="width: 81.9032px; height: 81.9032px; left: 70.3876vw; animation-duration: 18.0659s; animation-delay: 1.72619s;"></div><div class="bubble" style="width: 49.0332px; height: 49.0332px; left: 49.47vw; animation-duration: 18.848s; animation-delay: 9.9986s;"></div><div class="bubble" style="width: 66.1821px; height: 66.1821px; left: 85.9319vw; animation-duration: 25.7885s; animation-delay: 13.5632s;"></div><div class="bubble bubble2" style="width: 54.9353px; height: 54.9353px; left: 14.1803vw; animation-duration: 15.4241s; animation-delay: 11.7626s;"></div><div class="bubble bubble2" style="width: 116.152px; height: 116.152px; left: 96.5688vw; animation-duration: 18.8868s; animation-delay: 8.57345s;"></div><div class="bubble bubble2" style="width: 72.8963px; height: 72.8963px; left: 90.3464vw; animation-duration: 16.9492s; animation-delay: 8.53095s;"></div><div class="bubble bubble2" style="width: 87.2155px; height: 87.2155px; left: 58.8494vw; animation-duration: 23.9433s; animation-delay: 2.43257s;"></div><div class="bubble" style="width: 58.6243px; height: 58.6243px; left: 97.2385vw; animation-duration: 25.3861s; animation-delay: 13.0839s;"></div><div class="bubble bubble2" style="width: 69.5951px; height: 69.5951px; left: 65.485vw; animation-duration: 26.9694s; animation-delay: 2.57641s;"></div></div>
-<div id="glow-overlay" style="background: radial-gradient(circle at 804px 46px, rgba(0, 255, 247, 0.2) 0%, transparent 15%);"></div>
+<div id="bubbles-bg"></div>
+<div id="glow-overlay"></div>
 
 <!-- Top Bar (hidden by default) -->
 <nav id="topBar" style="display: none;">
@@ -522,7 +628,7 @@
     <button id="closeModalBtn" title="إغلاق">×</button>
     <h3>تغيير كلمة المرور</h3>
     <p>أدخل كلمة المرور الجديدة:</p>
-    <input type="password" id="newPasswordInput" placeholder="كلمة مرور جديدة" minlength="6" required="">
+    <input type="password" id="newPasswordInput" placeholder="كلمة مرور جديدة" minlength="6" required>
     <div id="changePassMsg" style="color:#ff8080;min-height:18px;margin-bottom:10px;"></div>
     <button id="saveNewPassBtn" type="button">حفظ</button>
   </div>
@@ -534,9 +640,9 @@
     <form id="authForm">
       <h2>تسجيل الدخول</h2>
       <label for="email">البريد الإلكتروني</label>
-      <input type="email" id="email" placeholder="example@mail.com" required="">
+      <input type="email" id="email" placeholder="example@mail.com" required>
       <label for="password">كلمة المرور</label>
-      <input type="password" id="password" placeholder="••••••••" required="">
+      <input type="password" id="password" placeholder="••••••••" required>
       <button id="signInBtn" type="button">تسجيل الدخول</button>
       <button id="signUpBtn" type="button">إنشاء حساب</button>
       <div class="or-divider">أو</div>
@@ -563,21 +669,124 @@
     </div>
   </div>
 
+  <!-- Patient Page (hidden by default) -->
+  <div id="patientPage">
+    <form id="patientForm">
+      <!-- Personal Information -->
+      <div class="form-section">
+        <h1>📝 المعلومات الشخصية</h1>
+        
+        <div class="form-group">
+          <label for="full_name">الاسم الكامل</label>
+          <input type="text" id="full_name" name="full_name" placeholder="أحمد محمد علي">
+        </div>
+        
+        <div class="form-group">
+          <label for="birth_date">تاريخ الميلاد</label>
+          <input type="date" id="birth_date" name="birth_date">
+        </div>
+        
+        <div class="form-group">
+          <label for="gender">الجنس</label>
+          <select id="gender" name="gender">
+            <option>ذكر</option>
+            <option>أنثى</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="phone">رقم الهاتف</label>
+          <input type="tel" id="phone" name="phone" placeholder="+966 50 123 4567">
+        </div>
+        
+        <div class="form-group">
+          <label for="address">العنوان</label>
+          <input type="text" id="address" name="address" placeholder="الرياض، المملكة العربية السعودية">
+        </div>
+        
+        <div class="form-group">
+          <label for="patient_email">البريد الإلكتروني (اختياري)</label>
+          <input type="email" id="patient_email" name="patient_email" placeholder="example@gmail.com">
+        </div>
+      </div>
+      
+      <hr>
+      
+      <!-- Booking Information -->
+      <div class="form-section">
+        <h1>📅 معلومات الحجز</h1>
+        
+        <div class="form-group">
+          <label for="appointment_date">تاريخ الموعد</label>
+          <input type="date" id="appointment_date" name="appointment_date">
+        </div>
+        
+        <div class="form-group">
+          <label for="preferred_time">الوقت المفضل</label>
+          <input type="time" id="preferred_time" name="preferred_time">
+        </div>
+        
+        <div class="form-group">
+          <label for="visit_type">نوع الزيارة</label>
+          <select id="visit_type" name="visit_type">
+            <option>فحص روتيني</option>
+            <option>متابعة</option>
+            <option>حالة طارئة</option>
+          </select>
+        </div>
+      </div>
+      
+      <hr>
+      
+      <!-- Medical Information -->
+      <div class="form-section">
+        <h1>🩺 المعلومات الطبية الأساسية</h1>
+        
+        <div class="form-group">
+          <label for="main_complaint">الشكوى الرئيسية (سبب الزيارة)</label>
+          <textarea id="main_complaint" name="main_complaint" placeholder="مثال: ألم في الصدر منذ أسبوع"></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label for="illness_history">تاريخ المرض الحالي</label>
+          <textarea id="illness_history" name="illness_history" placeholder="مثال: بدأ الألم منذ 3 أيام"></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label for="chronic_diseases">الأمراض المزمنة</label>
+          <textarea id="chronic_diseases" name="chronic_diseases" placeholder="مثال: ضغط الدم، السكري"></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label for="drug_allergy">الحساسية من الأدوية</label>
+          <textarea id="drug_allergy" name="drug_allergy" placeholder="لا يوجد أو قائمة الأدوية"></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label for="current_medication">الأدوية الحالية</label>
+          <textarea id="current_medication" name="current_medication" placeholder="مثال: أسبرين 81 ملغ"></textarea>
+        </div>
+      </div>
+      
+      <button type="submit">إرسال المعلومات</button>
+    </form>
+  </div>
+
   <header class="">
     <h1>Healthy Parental</h1>
   </header>
   <main class="">
     <section class="content-with-images">
       <div class="side-column">
-        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&amp;fit=crop&amp;w=500&amp;q=90">
-        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&amp;fit=crop&amp;w=500&amp;q=90">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=500&q=90">
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=500&q=90">
       </div>
       <div class="center-text">
         Good health is essential for a happy life. Maintaining a balanced diet, regular exercise, and sufficient rest can improve your well-being and energy.
       </div>
       <div class="side-column">
-        <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&amp;fit=crop&amp;w=500&amp;q=90">
-        <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&amp;fit=crop&amp;w=500&amp;q=90">
+        <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=500&q=90">
+        <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=500&q=90">
       </div>
     </section>
 
@@ -591,47 +800,56 @@
           <option value="usd">دولار أمريكي (USD)</option>
         </select>
       </div>
-      <div id="marketGrid"><div class="medicine-card">
-        <img src="https://masterapi.witheldokan.com/storage/seif-pharmacies/uploads/171137.webp" alt="بانادول إكسترا">
-        <div class="medicine-name">بانادول إكسترا</div>
-        <div class="medicine-price">30 جنيه</div>
-        <button class="add-to-cart-btn">إضافة للسلة</button>
-      </div><div class="medicine-card">
-        <img src="" alt="كونجستال">
-        <div class="medicine-name">كونجستال</div>
-        <div class="medicine-price">27 جنيه</div>
-        <button class="add-to-cart-btn">إضافة للسلة</button>
-      </div><div class="medicine-card">
-        <img src="" alt="فلورست">
-        <div class="medicine-name">فلورست</div>
-        <div class="medicine-price">18 جنيه</div>
-        <button class="add-to-cart-btn">إضافة للسلة</button>
-      </div><div class="medicine-card">
-        <img src="" alt="أوجمنتين 1 جم">
-        <div class="medicine-name">أوجمنتين 1 جم</div>
-        <div class="medicine-price">120 جنيه</div>
-        <button class="add-to-cart-btn">إضافة للسلة</button>
-      </div><div class="medicine-card">
-        <img src="" alt="كتافلام 50 مجم">
-        <div class="medicine-name">كتافلام 50 مجم</div>
-        <div class="medicine-price">45 جنيه</div>
-        <button class="add-to-cart-btn">إضافة للسلة</button>
-      </div><div class="medicine-card">
-        <img src=""alt="باراسيتامول">
-        <div class="medicine-name">باراسيتامول</div>
-        <div class="medicine-price">12 جنيه</div>
-        <button class="add-to-cart-btn">إضافة للسلة</button> 
-      </div><div class="medicine-card">
-        <img src="" alt="أموكسيل 500 مجم">
-        <div class="medicine-name">أموكسيل 500 مجم</div>
-        <div class="medicine-price">35 جنيه</div>
-        <button class="add-to-cart-btn">إضافة للسلة</button>
-      </div><div class="medicine-card">
-        <img src="" alt="سبترين DS">
-        <div class="medicine-name">سبترين DS</div>
-        <div class="medicine-price">20 جنيه</div>
-        <button class="add-to-cart-btn">إضافة للسلة</button>
-      </div></div>
+      <div id="marketGrid">
+        <div class="medicine-card">
+          <img src="https://masterapi.witheldokan.com/storage/seif-pharmacies/uploads/171137.webp" alt="بانادول إكسترا">
+          <div class="medicine-name">بانادول إكسترا</div>
+          <div class="medicine-price">30 جنيه</div>
+          <button class="add-to-cart-btn">إضافة للسلة</button>
+        </div>
+        <div class="medicine-card">
+          <img src="" alt="كونجستال">
+          <div class="medicine-name">كونجستال</div>
+          <div class="medicine-price">27 جنيه</div>
+          <button class="add-to-cart-btn">إضافة للسلة</button>
+        </div>
+        <div class="medicine-card">
+          <img src="" alt="فلورست">
+          <div class="medicine-name">فلورست</div>
+          <div class="medicine-price">18 جنيه</div>
+          <button class="add-to-cart-btn">إضافة للسلة</button>
+        </div>
+        <div class="medicine-card">
+          <img src="" alt="أوجمنتين 1 جم">
+          <div class="medicine-name">أوجمنتين 1 جم</div>
+          <div class="medicine-price">120 جنيه</div>
+          <button class="add-to-cart-btn">إضافة للسلة</button>
+        </div>
+        <div class="medicine-card">
+          <img src="" alt="كتافلام 50 مجم">
+          <div class="medicine-name">كتافلام 50 مجم</div>
+          <div class="medicine-price">45 جنيه</div>
+          <button class="add-to-cart-btn">إضافة للسلة</button>
+        </div>
+        <div class="medicine-card">
+          <img src="" alt="باراسيتامول">
+          <div class="medicine-name">باراسيتامول</div>
+          <div class="medicine-price">12 جنيه</div>
+          <button class="add-to-cart-btn">إضافة للسلة</button> 
+        </div>
+        <div class="medicine-card">
+          <img src="" alt="أموكسيل 500 مجم">
+          <div class="medicine-name">أموكسيل 500 مجم</div>
+          <div class="medicine-price">35 جنيه</div>
+          <button class="add-to-cart-btn">إضافة للسلة</button>
+        </div>
+        <div class="medicine-card">
+          <img src="" alt="سبترين DS">
+          <div class="medicine-name">سبترين DS</div>
+          <div class="medicine-price">20 جنيه</div>
+          <button class="add-to-cart-btn">إضافة للسلة</button>
+        </div>
+      </div>
     </section>
   </main>
 </div>
@@ -645,306 +863,347 @@
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
   import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, signOut, GoogleAuthProvider, signInWithPopup, updatePassword } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
+  import { getFirestore, collection, addDoc, doc, setDoc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js";
 
   const firebaseConfig = {
-    apiKey: "AIzaSyAtb4EIuHEZF-IoAWYiq3zE-qYuUvP4Wgo",
-    authDomain: "sign-in-properly.firebaseapp.com",
-    projectId: "sign-in-properly",
-    storageBucket: "sign-in-properly.appspot.com",
-    messagingSenderId: "431658776093",
-    appId: "1:431658776093:web:df81018d7f4b76d74bf8f4",
-    measurementId: "G-WC4VPBD4T4"
+    apiKey: "AIzaSyD3v9Qv1nVvQhT3c3O0C0B2F8B2F8B2F8B2F",
+    authDomain: "healthy-parental.firebaseapp.com",
+    projectId: "healthy-parental",
+    storageBucket: "healthy-parental.appspot.com",
+    messagingSenderId: "123456789",
+    appId: "1:123456789:web:1234567890abcdef"
   };
 
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
+  const db = getFirestore(app);
+  const googleProvider = new GoogleAuthProvider();
 
   // DOM Elements
+  const authForm = document.getElementById('authForm');
   const emailInput = document.getElementById('email');
-  const passInput = document.getElementById('password');
+  const passwordInput = document.getElementById('password');
   const signInBtn = document.getElementById('signInBtn');
   const signUpBtn = document.getElementById('signUpBtn');
   const googleSignInBtn = document.getElementById('googleSignInBtn');
-  const message = document.getElementById('message');
-  const authCenter = document.getElementById('authCenter');
-  const header = document.querySelector('header');
-  const main = document.querySelector('main');
+  const messageDiv = document.getElementById('message');
   const topBar = document.getElementById('topBar');
-  const userEmailSpan = document.getElementById('userEmail');
+  const userEmail = document.getElementById('userEmail');
   const userAvatar = document.getElementById('userAvatar');
   const signOutBtn = document.getElementById('signOutBtn');
   const changePassBtn = document.getElementById('changePassBtn');
-
-  // Modal elements
   const changePassModal = document.getElementById('changePassModal');
   const closeModalBtn = document.getElementById('closeModalBtn');
-  const saveNewPassBtn = document.getElementById('saveNewPassBtn');
   const newPasswordInput = document.getElementById('newPasswordInput');
+  const saveNewPassBtn = document.getElementById('saveNewPassBtn');
   const changePassMsg = document.getElementById('changePassMsg');
-
-  // Medicine Market Data
-  const medicines = [
-    {
-      name: "بانادول إكسترا",
-      img: "https://masterapi.witheldokan.com/storage/seif-pharmacies/uploads/171137.webp",
-      egp: 30,
-      usd: 0.65
-    },
-    {
-      name: "كونجستال",
-      img: "",
-      egp: 27,
-      usd: 0.58
-    },
-    {
-      name: "فلورست",
-      img: "",
-      egp: 18,
-      usd: 0.39
-    },
-    {
-      name: "أوجمنتين 1 جم",
-      img: "",
-      egp: 120,
-      usd: 2.6
-    },
-    {
-      name: "كتافلام 50 مجم",
-      img: "",
-      egp: 45,
-      usd: 0.97
-    },
-    {
-      name: "باراسيتامول",
-      img: "",
-      egp: 12,
-      usd: 0.26
-    },
-    {
-      name: "أموكسيل 500 مجم",
-      img: "",
-      egp: 35,
-      usd: 0.76
-    },
-    {
-      name: "سبترين DS",
-      img: "",
-      egp: 20,
-      usd: 0.43
-    }
-  ];
-
-  // Cart functionality
-  let cartItems = 0;
-  const cartCount = document.querySelector('.cart-count');
-  const cartIcon = document.querySelector('.cart-icon');
-
-  // Currency selection
-  const currencySelect = document.getElementById('currencySelect');
-  let currentCurrency = 'egp';
-
-  // Render medicine market
-  function renderMarket(currency = "egp") {
-    const grid = document.getElementById('marketGrid');
-    if (!grid) return;
-    grid.innerHTML = '';
-    
-    medicines.forEach(med => {
-      const price = currency === "egp" ? `${med.egp} جنيه` : `${med.usd.toFixed(2)} $`;
-      
-      const card = document.createElement('div');
-      card.className = 'medicine-card';
-      
-      card.innerHTML = `
-        <img src="${med.img}" alt="${med.name}">
-        <div class="medicine-name">${med.name}</div>
-        <div class="medicine-price">${price}</div>
-        <button class="add-to-cart-btn">إضافة للسلة</button>
-      `;
-      
-      // Add click event to the button
-      const addBtn = card.querySelector('.add-to-cart-btn');
-      addBtn.addEventListener('click', () => {
-        cartItems++;
-        cartCount.textContent = cartItems;
-        // Add animation
-        cartIcon.style.transform = 'scale(1.2)';
-        setTimeout(() => {
-          cartIcon.style.transform = 'scale(1)';
-        }, 300);
-      });
-      
-      grid.appendChild(card);
-    });
-  }
-
-  // Currency change handler
-  if (currencySelect) {
-    currencySelect.addEventListener('change', e => {
-      currentCurrency = e.target.value;
-      renderMarket(currentCurrency);
-    });
-  }
-
-  // Initialize market
-  renderMarket();
-
-  // Avatar function
-  function getAvatar(email, photoURL) {
-    if (photoURL) return photoURL;
-    const md5 = email => window.CryptoJS.MD5(email.trim().toLowerCase()).toString();
-    return `https://www.gravatar.com/avatar/${md5(email)}?d=identicon`;
-  }
-
-  // Sign in with email/password
-  signInBtn.addEventListener('click', () => {
-    message.textContent = '';
-    signInWithEmailAndPassword(auth, emailInput.value, passInput.value)
-      .then(() => showContent())
-      .catch(err => message.textContent = err.message);
-  });
-
-  // Sign up with email/password
-  signUpBtn.addEventListener('click', () => {
-    message.textContent = '';
-    createUserWithEmailAndPassword(auth, emailInput.value, passInput.value)
-      .then(() => showContent())
-      .catch(err => message.textContent = err.message);
-  });
-
-  // Google Sign-In
-  if (googleSignInBtn) {
-    googleSignInBtn.onclick = async () => {
-      message.textContent = '';
-      const provider = new GoogleAuthProvider();
-      try {
-        await signInWithPopup(auth, provider);
-        showContent();
-      } catch (err) {
-        message.textContent = err.message;
-      }
-    };
-  }
-
-  // Show content after login
-  function showContent() {
-    authCenter.style.display = 'none';
-    document.getElementById('chooseRolePage').style.display = 'flex';
-    header.classList.remove('visible');
-    main.classList.remove('visible');
-    topBar.style.display = 'block';
-
-    const user = auth.currentUser;
-    if (user) {
-      userEmailSpan.textContent = user.email || '';
-      userAvatar.src = getAvatar(user.email || '', user.photoURL || '');
-    }
-  }
-
-  // Role selection logic
-  document.getElementById('chooseDoctorBtn').onclick = function() {
-    document.getElementById('chooseRolePage').style.display = 'none';
-    header.classList.add('visible');
-    main.classList.add('visible');
-  };
-  document.getElementById('choosePatientBtn').onclick = function() {
-    document.getElementById('chooseRolePage').style.display = 'none';
-    header.classList.add('visible');
-    main.classList.add('visible');
-  };
-
-  // Sign out
-  if (signOutBtn) {
-    signOutBtn.onclick = () => {
-      signOut(auth).then(() => {
-        topBar.style.display = 'none';
-        header.classList.remove('visible');
-        main.classList.remove('visible');
-        authCenter.style.display = 'flex';
-        document.getElementById('authForm').reset();
-        document.getElementById('chooseRolePage').style.display = 'none';
-        cartItems = 0;
-        cartCount.textContent = '0';
-      });
-    };
-  }
-
-  // Change password modal logic
-  if (changePassBtn) {
-    changePassBtn.onclick = () => {
-      changePassMsg.textContent = '';
-      newPasswordInput.value = '';
-      changePassModal.style.display = 'flex';
-      newPasswordInput.focus();
-    };
-  }
-  if (closeModalBtn) {
-    closeModalBtn.onclick = () => {
-      changePassModal.style.display = 'none';
-    };
-  }
-  if (saveNewPassBtn) {
-    saveNewPassBtn.onclick = async () => {
-      const user = auth.currentUser;
-      const newPass = newPasswordInput.value;
-      changePassMsg.textContent = '';
-      if (!newPass || newPass.length < 6) {
-        changePassMsg.textContent = 'كلمة المرور يجب أن تكون 6 أحرف أو أكثر.';
-        return;
-      }
-      try {
-        await updatePassword(user, newPass);
-        changePassMsg.style.color = "#00fff7";
-        changePassMsg.textContent = "تم تغيير كلمة المرور بنجاح!";
-        setTimeout(() => {
-          changePassModal.style.display = 'none';
-          changePassMsg.style.color = "#ff8080";
-        }, 1200);
-      } catch (err) {
-        if (err.code === "auth/requires-recent-login") {
-          changePassMsg.textContent = "يجب تسجيل الدخول مجددًا لتغيير كلمة المرور.";
-        } else {
-          changePassMsg.textContent = err.message;
-        }
-      }
-    };
-  }
-
-  // Close modal on outside click
-  window.onclick = function(event) {
-    if (event.target === changePassModal) {
-      changePassModal.style.display = "none";
-    }
-  };
-
-  // Glow mouse effect
-  const glowOverlay = document.getElementById('glow-overlay');
-  document.addEventListener('mousemove', e => {
-    glowOverlay.style.background = `radial-gradient(circle at ${e.clientX}px ${e.clientY}px, rgba(0,255,247,0.2) 0%, transparent 15%)`;
-  });
+  const header = document.querySelector('header');
+  const main = document.querySelector('main');
+  const chooseRolePage = document.getElementById('chooseRolePage');
+  const chooseDoctorBtn = document.getElementById('chooseDoctorBtn');
+  const choosePatientBtn = document.getElementById('choosePatientBtn');
+  const patientPage = document.getElementById('patientPage');
+  const patientForm = document.getElementById('patientForm');
 
   // Bubbles animation
-  const bubblesBg = document.getElementById('bubbles-bg');
-  function randomBetween(a, b) {
-    return Math.random() * (b - a) + a;
+  function createBubbles() {
+    const bubblesContainer = document.getElementById('bubbles-bg');
+    const bubbleCount = 20;
+    
+    for (let i = 0; i < bubbleCount; i++) {
+      const bubble = document.createElement('div');
+      bubble.classList.add('bubble');
+      if (i % 3 === 0) bubble.classList.add('bubble2');
+      
+      const size = Math.random() * 150 + 30;
+      bubble.style.width = `${size}px`;
+      bubble.style.height = `${size}px`;
+      
+      const posX = Math.random() * 100;
+      bubble.style.left = `${posX}%`;
+      
+      const delay = Math.random() * 15;
+      bubble.style.animationDelay = `${delay}s`;
+      
+      bubblesContainer.appendChild(bubble);
+    }
   }
-  function createBubble() {
-    const bubble = document.createElement('div');
-    bubble.className = Math.random() > 0.5 ? 'bubble' : 'bubble bubble2';
-    const size = randomBetween(40, 120);
-    bubble.style.width = `${size}px`;
-    bubble.style.height = `${size}px`;
-    bubble.style.left = `${randomBetween(2, 98)}vw`;
-    bubble.style.animationDuration = `${randomBetween(14, 28)}s`;
-    bubble.style.animationDelay = `${randomBetween(0, 14)}s`;
-    bubblesBg.appendChild(bubble);
-    bubble.addEventListener('animationend', () => {
-      bubble.remove();
-      createBubble();
+  
+  createBubbles();
+
+  // Authentication Functions
+  async function handleSignIn() {
+    const email = emailInput.value;
+    const password = passwordInput.value;
+    
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+      showMessage(`مرحباً بعودتك، ${user.email}`, 'success');
+      
+      // Check if user has role selected
+      const userDoc = await getDoc(doc(db, 'users', user.uid));
+      if (userDoc.exists() && userDoc.data().role) {
+        showMainContent(user);
+      } else {
+        showRoleSelection();
+      }
+    } catch (error) {
+      showMessage(getErrorMessage(error.code), 'error');
+    }
+  }
+
+  async function handleSignUp() {
+    const email = emailInput.value;
+    const password = passwordInput.value;
+    
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+      showMessage(`تم إنشاء الحساب بنجاح، ${user.email}`, 'success');
+      
+      // Create user document in Firestore
+      await setDoc(doc(db, 'users', user.uid), {
+        email: user.email,
+        createdAt: new Date()
+      });
+      
+      showRoleSelection();
+    } catch (error) {
+      showMessage(getErrorMessage(error.code), 'error');
+    }
+  }
+
+  async function handleGoogleSignIn() {
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      const user = result.user;
+      showMessage(`تم تسجيل الدخول بنجاح، ${user.email}`, 'success');
+      
+      // Check if user exists in Firestore
+      const userDoc = await getDoc(doc(db, 'users', user.uid));
+      if (userDoc.exists() && userDoc.data().role) {
+        showMainContent(user);
+      } else {
+        // Create user document if it doesn't exist
+        if (!userDoc.exists()) {
+          await setDoc(doc(db, 'users', user.uid), {
+            email: user.email,
+            createdAt: new Date()
+          });
+        }
+        showRoleSelection();
+      }
+    } catch (error) {
+      showMessage(getErrorMessage(error.code), 'error');
+    }
+  }
+
+  function showRoleSelection() {
+    authForm.style.display = 'none';
+    chooseRolePage.style.display = 'flex';
+  }
+
+  async function handleRoleSelection(role) {
+    const user = auth.currentUser;
+    if (user) {
+      try {
+        await updateDoc(doc(db, 'users', user.uid), {
+          role: role,
+          roleSelectedAt: new Date()
+        });
+        
+        if (role === 'patient') {
+          showPatientPage();
+        } else {
+          showMainContent(user);
+        }
+      } catch (error) {
+        showMessage('حدث خطأ أثناء تحديد الدور', 'error');
+      }
+    }
+  }
+
+  function showPatientPage() {
+    chooseRolePage.style.display = 'none';
+    patientPage.style.display = 'block';
+    topBar.style.display = 'flex';
+  }
+
+  async function handlePatientFormSubmit(e) {
+    e.preventDefault();
+    
+    const user = auth.currentUser;
+    if (!user) return;
+    
+    try {
+      // Collect form data
+      const formData = {
+        full_name: document.getElementById('full_name').value,
+        birth_date: document.getElementById('birth_date').value,
+        gender: document.getElementById('gender').value,
+        phone: document.getElementById('phone').value,
+        address: document.getElementById('address').value,
+        patient_email: document.getElementById('patient_email').value,
+        appointment_date: document.getElementById('appointment_date').value,
+        preferred_time: document.getElementById('preferred_time').value,
+        visit_type: document.getElementById('visit_type').value,
+        main_complaint: document.getElementById('main_complaint').value,
+        illness_history: document.getElementById('illness_history').value,
+        chronic_diseases: document.getElementById('chronic_diseases').value,
+        drug_allergy: document.getElementById('drug_allergy').value,
+        current_medication: document.getElementById('current_medication').value,
+        submittedAt: new Date()
+      };
+      
+      // Save to Firestore
+      await addDoc(collection(db, 'patients'), {
+        userId: user.uid,
+        ...formData
+      });
+      
+      showMessage('تم إرسال معلوماتك بنجاح! سيتم التواصل معك قريباً.', 'success');
+      
+      // Show main content after successful submission
+      showMainContent(user);
+    } catch (error) {
+      showMessage('حدث خطأ أثناء إرسال البيانات', 'error');
+    }
+  }
+
+  function showMainContent(user) {
+    authForm.style.display = 'none';
+    chooseRolePage.style.display = 'none';
+    patientPage.style.display = 'none';
+    topBar.style.display = 'flex';
+    header.classList.add('visible');
+    main.classList.add('visible');
+    
+    userEmail.textContent = user.email;
+    if (user.photoURL) {
+      userAvatar.src = user.photoURL;
+    }
+  }
+
+  async function handleSignOut() {
+    try {
+      await signOut(auth);
+      resetUI();
+      showMessage('تم تسجيل الخروج بنجاح', 'success');
+    } catch (error) {
+      showMessage('حدث خطأ أثناء تسجيل الخروج', 'error');
+    }
+  }
+
+  async function handleChangePassword() {
+    const newPassword = newPasswordInput.value;
+    const user = auth.currentUser;
+    
+    if (newPassword.length < 6) {
+      changePassMsg.textContent = 'كلمة المرور يجب أن تكون 6 أحرف على الأقل';
+      return;
+    }
+    
+    try {
+      await updatePassword(user, newPassword);
+      changePassMsg.textContent = 'تم تغيير كلمة المرور بنجاح';
+      changePassMsg.style.color = '#80ff80';
+      setTimeout(() => {
+        changePassModal.style.display = 'none';
+        changePassMsg.textContent = '';
+        newPasswordInput.value = '';
+      }, 1500);
+    } catch (error) {
+      changePassMsg.textContent = getErrorMessage(error.code);
+    }
+  }
+
+  function resetUI() {
+    authForm.style.display = 'flex';
+    chooseRolePage.style.display = 'none';
+    patientPage.style.display = 'none';
+    topBar.style.display = 'none';
+    header.classList.remove('visible');
+    main.classList.remove('visible');
+    emailInput.value = '';
+    passwordInput.value = '';
+  }
+
+  function showMessage(message, type) {
+    messageDiv.textContent = message;
+    messageDiv.style.color = type === 'error' ? '#ff8080' : '#80ff80';
+    setTimeout(() => {
+      messageDiv.textContent = '';
+    }, 5000);
+  }
+
+  function getErrorMessage(errorCode) {
+    const errorMessages = {
+      'auth/invalid-email': 'البريد الإلكتروني غير صالح',
+      'auth/user-disabled': 'هذا الحساب معطل',
+      'auth/user-not-found': 'لم يتم العثور على حساب بهذا البريد',
+      'auth/wrong-password': 'كلمة المرور غير صحيحة',
+      'auth/email-already-in-use': 'هذا البريد الإلكتروني مستخدم بالفعل',
+      'auth/weak-password': 'كلمة المرور ضعيفة جداً',
+      'auth/requires-recent-login': 'يجب تسجيل الدخول مرة أخرى لتغيير كلمة المرور'
+    };
+    
+    return errorMessages[errorCode] || 'حدث خطأ غير متوقع';
+  }
+
+  // Event Listeners
+  signInBtn.addEventListener('click', handleSignIn);
+  signUpBtn.addEventListener('click', handleSignUp);
+  googleSignInBtn.addEventListener('click', handleGoogleSignIn);
+  signOutBtn.addEventListener('click', handleSignOut);
+  changePassBtn.addEventListener('click', () => {
+    changePassModal.style.display = 'flex';
+  });
+  closeModalBtn.addEventListener('click', () => {
+    changePassModal.style.display = 'none';
+    changePassMsg.textContent = '';
+  });
+  saveNewPassBtn.addEventListener('click', handleChangePassword);
+  chooseDoctorBtn.addEventListener('click', () => handleRoleSelection('doctor'));
+  choosePatientBtn.addEventListener('click', () => handleRoleSelection('patient'));
+  patientForm.addEventListener('submit', handlePatientFormSubmit);
+
+  // Check auth state
+  auth.onAuthStateChanged((user) => {
+    if (user) {
+      getDoc(doc(db, 'users', user.uid)).then((docSnap) => {
+        if (docSnap.exists() && docSnap.data().role) {
+          if (docSnap.data().role === 'patient') {
+            showPatientPage();
+          } else {
+            showMainContent(user);
+          }
+        } else {
+          showRoleSelection();
+        }
+      });
+    } else {
+      resetUI();
+    }
+  });
+
+  // Shopping cart functionality
+  let cartCount = 0;
+  const cartCountElement = document.querySelector('.cart-count');
+  const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+  
+  addToCartButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      cartCount++;
+      cartCountElement.textContent = cartCount;
+      
+      // Animation effect
+      cartCountElement.style.transform = 'scale(1.3)';
+      setTimeout(() => {
+        cartCountElement.style.transform = 'scale(1)';
+      }, 300);
     });
-  }
-  for (let i = 0; i < 18; i++) createBubble();
+  });
 </script>
-
-
-<iframe ng-non-bindable="" frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" tabindex="-1" vspace="0" width="100%" aria-hidden="true" id="I0_1756148463273" name="I0_1756148463273" src="https://sign-in-properly.firebaseapp.com/__/auth/iframe?apiKey=AIzaSyAtb4EIuHEZF-IoAWYiq3zE-qYuUvP4Wgo&amp;appName=%5BDEFAULT%5D&amp;v=10.12.4&amp;eid=p&amp;usegapi=1&amp;jsh=m%3B%2F_%2Fscs%2Fabc-static%2F_%2Fjs%2Fk%3Dgapi.lb.ar.geQ2MSC8h8U.O%2Fd%3D1%2Frs%3DAHpOoo9X0i60BRl87P2jp0GahTXbFWoGhQ%2Fm%3D__features__#id=I0_1756148463273&amp;_gfid=I0_1756148463273&amp;parent=https%3A%2F%2Fele-hospital.vercel.app&amp;pfname=&amp;rpctoken=53830830" style="position: absolute; top: -100px; width: 1px; height: 1px;"></iframe></body></html>
+</body>
+</html>
