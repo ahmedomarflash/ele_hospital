@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
+<html lang="ar" dir="rtl"><head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Healthy Parental</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600&amp;display=swap" rel="stylesheet">
   <style>
     html, body {
       height: 100%;
@@ -65,579 +64,864 @@
       pointer-events: none;
       z-index: 1;
     }
-
-    /* Top bar */
-    #topBar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 60px;
-      background: rgba(30, 40, 45, 0.95);
-      backdrop-filter: blur(10px);
-      display: none;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 20px;
-      z-index: 100;
-      box-shadow: 0 2px 10px rgba(0, 255, 247, 0.3);
-    }
-    #userInfo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    #userAvatar {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      border: 2px solid #00fff7;
-    }
-    #userName {
-      color: #00fff7;
-      font-weight: 600;
-    }
-    #signOutBtn {
-      background: linear-gradient(135deg, #ff4444, #cc3333);
-      border: none;
-      padding: 8px 16px;
-      border-radius: 20px;
-      color: white;
-      cursor: pointer;
-      font-family: 'Cairo', sans-serif;
-      font-weight: 600;
-    }
-
-    /* Auth container */
-    #authContainer {
+    /* Centered box for all content */
+    #mainBox {
       position: relative;
       z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 80vh;
-    }
-    #authBox {
+      max-width: 1050px;
+      margin: 90px auto 40px auto;
       background: rgba(30, 40, 45, 0.97);
       border-radius: 28px;
       box-shadow: 0 0 40px #00fff7bb, 0 8px 32px #002f2f44;
-      padding: 40px;
-      max-width: 400px;
-      width: 90%;
-      text-align: center;
-    }
-    #authBox h2 {
-      color: #00fff7;
-      text-shadow: 0 0 10px #00fff7;
-      margin-bottom: 30px;
-    }
-    .auth-input {
-      width: 100%;
-      padding: 12px 15px;
-      margin: 10px 0;
-      border: none;
-      border-radius: 12px;
-      background: rgba(0, 47, 47, 0.8);
-      color: #e0f7f7;
-      font-family: 'Cairo', sans-serif;
-      box-shadow: inset 0 0 10px rgba(0, 255, 247, 0.3);
-    }
-    .auth-input:focus {
-      outline: none;
-      box-shadow: 0 0 20px #00fff7ff;
-    }
-    .auth-btn {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border: none;
-      border-radius: 12px;
-      font-family: 'Cairo', sans-serif;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-    #loginBtn, #registerBtn {
-      background: linear-gradient(135deg, #00bcd4, #00fff7);
-      color: #002f2f;
-    }
-    #googleBtn {
-      background: #dd4b39;
-      color: white;
-    }
-    .auth-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(0, 255, 247, 0.4);
-    }
-
-    /* Role selection */
-    #chooseRolePage {
-      position: relative;
-      z-index: 2;
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 400px;
-    }
-    #chooseRolePage h2 {
-      color: #00fff7;
-      margin-bottom: 30px;
-      font-family: 'Cairo', sans-serif;
-    }
-    .role-option {
+      padding: 40px 32px 32px 32px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin: 20px;
+      min-height: 0;
     }
-    .role-option img {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      box-shadow: 0 0 20px #00fff7aa;
-      margin-bottom: 10px;
-      background: #fff;
-    }
-    .role-btn {
-      width: 180px;
-      font-size: 1.3rem;
-      background: linear-gradient(135deg, #00bcd4, #00fff7);
-      color: #002f2f;
-      border: none;
-      padding: 12px;
-      border-radius: 12px;
-      cursor: pointer;
-      font-family: 'Cairo', sans-serif;
-      font-weight: 600;
-    }
-
-    /* Main content */
-    header {
-      text-align: center;
-      margin-bottom: 40px;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
-      position: relative;
-      z-index: 2;
-    }
-    header.visible {
-      opacity: 1;
-    }
-    header h1 {
-      color: #00fff7;
-      text-shadow: 0 0 20px #00fff7;
-      font-size: 3rem;
-      margin: 0;
-    }
-    main {
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
-      position: relative;
-      z-index: 2;
-    }
-    main.visible {
-      opacity: 1;
-    }
-    .content-with-images {
+    #authCenter {
+      position: static;
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 40px;
-      padding: 0 20px;
-    }
-    .content-card {
-      background: rgba(30, 40, 45, 0.97);
-      border-radius: 20px;
-      padding: 30px;
-      max-width: 350px;
-      text-align: center;
-      box-shadow: 0 0 30px rgba(0, 255, 247, 0.3);
-      transition: transform 0.3s;
-    }
-    .content-card:hover {
-      transform: translateY(-10px);
-    }
-    .content-card img {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      margin-bottom: 20px;
-      box-shadow: 0 0 15px rgba(0, 255, 247, 0.5);
-    }
-    .content-card h3 {
-      color: #00fff7;
-      margin-bottom: 15px;
-    }
-
-    /* Patient Form Styles */
-    #patientPage {
-      position: relative;
-      z-index: 2;
-      display: none;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      min-height: 80vh;
-    }
-    #patientFormBox {
-      max-width: 800px;
-      margin: 40px auto;
-      background: rgba(30, 40, 45, 0.97);
-      border-radius: 28px;
-      box-shadow: 0 0 40px #00fff7bb, 0 8px 32px #002f2f44;
-      padding: 40px;
-      width: 90%;
-    }
-    #patientForm {
+      z-index: 10;
+      background: none;
       width: 100%;
-    }
-    .form-section {
       margin-bottom: 30px;
     }
-    .form-section h1 {
-      color: #00fff7;
-      text-shadow: 0 0 10px #00fff7;
-      font-size: 1.8rem;
-      margin-bottom: 20px;
-      text-align: center;
+    #authForm {
+      background: rgba(0, 47, 47, 0.97);
+      box-shadow: 0 0 32px #00fff7bb, 0 8px 32px #002f2f44;
+      border-radius: 22px;
+      padding: 38px 32px 28px 32px;
+      max-width: 370px;
+      width: 100%;
+      text-align: right;
+      z-index: 11;
+      position: relative;
+      font-family: 'Cairo', sans-serif;
       display: flex;
-      align-items: center;
+      flex-direction: column;
+      align-items: stretch;
       justify-content: center;
-      gap: 10px;
+      margin-left: 0;
+      margin-right: 0;
+      min-height: 0;
     }
-    .form-group {
-      margin-bottom: 20px;
+    #authForm h2 {
+      text-align: center;
+      font-family: 'Cairo', sans-serif;
+      font-weight: 700;
+      color: #00fff7;
+      margin-bottom: 18px;
+      font-size: 2rem;
     }
-    .form-group label {
+    label {
       display: block;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       font-weight: 600;
-      color: #aaf0f0;
+      font-size: 18px;
+      font-family: 'Cairo', sans-serif;
     }
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
+    input[type="email"],
+    input[type="password"] {
       width: 100%;
+      box-sizing: border-box;
       padding: 12px 15px;
       border-radius: 12px;
       border: none;
-      font-size: 16px;
+      font-size: 17px;
+      margin-bottom: 22px;
       background-color: #002f2f;
-      color: #e0f7f7;
+      color: #aaf0f0;
       box-shadow: inset 0 0 10px #00fff7cc;
       font-family: 'Cairo', sans-serif;
-      transition: all 0.3s;
-      box-sizing: border-box;
+      margin-right: 0;
+      margin-left: 0;
+      transition: background 0.2s, color 0.2s;
     }
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
+    input[type="email"]:focus,
+    input[type="password"]:focus {
       outline: none;
       box-shadow: 0 0 20px #00fff7ff;
       background-color: #004c4c;
+      color: #e0f7f7;
     }
-    .form-group textarea {
-      min-height: 100px;
-      resize: vertical;
-    }
-    .form-group select {
-      appearance: none;
-      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2300fff7'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
-      background-repeat: no-repeat;
-      background-position: right 15px center;
-      background-size: 20px;
-    }
-    .form-section hr {
-      border: none;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, #00fff7aa, transparent);
-      margin: 40px 0;
-    }
-    #submitPatientBtn {
+    button {
       width: 100%;
       background: linear-gradient(135deg, #00bcd4, #00fff7);
       border: none;
-      padding: 16px 0;
+      padding: 14px 0;
       font-size: 20px;
       font-weight: 700;
       border-radius: 14px;
       cursor: pointer;
       color: #002f2f;
-      margin-top: 20px;
+      margin-bottom: 10px;
       box-shadow: 0 0 15px #00fff7cc;
       font-family: 'Cairo', sans-serif;
-      transition: all 0.3s;
+      transition: background 0.2s;
     }
-    #submitPatientBtn:hover {
+    button:hover {
       background: linear-gradient(135deg, #00fff7, #00bcd4);
-      box-shadow: 0 0 30px #00fff7ff;
+      box-shadow: 0 0 30px #00fff7ff, 0 0 50px #00bcd4ff;
     }
-    #backToMainBtn {
-      width: 100%;
-      background: linear-gradient(135deg, #666, #888);
-      border: none;
-      padding: 12px 0;
+    #googleSignInBtn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #fff;
+      color: #222;
+      border: 1px solid #00fff7;
+      margin-bottom: 16px;
+      font-weight: 700;
       font-size: 16px;
-      font-weight: 600;
-      border-radius: 14px;
-      cursor: pointer;
-      color: white;
-      margin-top: 10px;
+      box-shadow: 0 0 8px #00fff7cc;
+      transition: background 0.2s;
       font-family: 'Cairo', sans-serif;
+    }
+    #googleSignInBtn:hover {
+      background: #e0f7f7;
+    }
+    #googleSignInBtn img {
+      width: 22px;
+      height: 22px;
+      vertical-align: middle;
+    }
+    #message {
+      margin-top:10px;
+      color:#ff8080;
+      font-size:14px;
+      min-height: 18px;
+      text-align: center;
+      font-family: 'Cairo', sans-serif;
+    }
+    .or-divider {
+      margin: 16px 0 8px 0;
+      text-align: center;
+      color: #aaa;
+      font-family: 'Cairo', sans-serif;
+    }
+    #topBar {
+      width: 100vw;
+      background: #002f2f;
+      box-shadow: 0 2px 16px #00fff7aa;
+      position: fixed;
+      top: 0; left: 0;
+      z-index: 100;
+      padding: 0;
+      height: 70px;
+      display: none;
+    }
+    #topBar .bar-content {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 18px;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 10px 24px;
+      height: 100%;
+    }
+    #userAvatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #e0f7f7;
+      object-fit: cover;
+      border: 2px solid #00fff7;
+    }
+    #userEmail {
+      color: #aaf0f0;
+      font-size: 1.1rem;
+      font-weight: 700;
+      direction: ltr;
+      margin-left: 10px;
+      font-family: 'Cairo', sans-serif;
+    }
+    #topBar button {
+      background: linear-gradient(135deg, #00bcd4, #00fff7);
+      border: none;
+      padding: 7px 18px;
+      font-size: 1rem;
+      font-weight: 700;
+      border-radius: 10px;
+      cursor: pointer;
+      color: #002f2f;
+      margin-left: 8px;
+      box-shadow: 0 0 8px #00fff7cc;
+      transition: background 0.2s;
+      font-family: 'Cairo', sans-serif;
+    }
+    #topBar button:hover {
+      background: linear-gradient(135deg, #00fff7, #00bcd4);
+    }
+    header, main {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+      z-index: 1;
+      position: relative;
+      display: block;
+    }
+    header.visible, main.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    header h1 {
+      font-size: 3.8rem;
+      margin-bottom: 40px;
+      color: #00fff7;
+      text-shadow: 0 0 10px #00fff7, 0 0 20px #00fff7, 0 0 40px #00fff7, 0 0 80px #00fff7;
+      letter-spacing: 3px;
+      text-align: center;
+      font-family: 'Cairo', sans-serif;
+    }
+    .content-with-images {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      max-width: 1000px;
+      margin: 40px auto;
+    }
+    .side-column {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .side-column img {
+      width: 260px;
+      height: 160px;
+      border-radius: 16px;
+      object-fit: cover;
+      box-shadow: 0 0 15px #00fff7aa, 0 0 30px #00fff7cc;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      cursor: pointer;
+    }
+    .side-column img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px #00fff7dd, 0 0 50px #00fff7ee;
+    }
+    .center-text {
+      max-width: 380px;
+      font-size: 1.2rem;
+      line-height: 1.7;
+      font-weight: 600;
+      text-align: center;
+      color: #aaf0f0;
+      padding: 15px;
+      border: 2px solid #00fff7aa;
+      border-radius: 14px;
+      background: rgba(0, 255, 247, 0.1);
+      font-family: 'Cairo', sans-serif;
+    }
+    /* Modal styles */
+    #changePassModal {
+      display: none;
+      position: fixed;
+      z-index: 200;
+      left: 0; top: 0; width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.4);
+      align-items: center;
+      justify-content: center;
+    }
+    #changePassModal .modal-content {
+      background: #002f2f;
+      color: #e0f7f7;
+      padding: 30px 24px 20px 24px;
+      border-radius: 16px;
+      box-shadow: 0 0 30px #00fff7cc;
+      min-width: 320px;
+      max-width: 90vw;
+      text-align: center;
+      position: relative;
+      font-family: 'Cairo', sans-serif;
+    }
+    #changePassModal input[type="password"] {
+      margin-bottom: 18px;
+      background: #18344a;
+      color: #e0f7f7;
+      border-radius: 8px;
+      border: none;
+      padding: 10px;
+      width: 90%;
+      font-size: 1rem;
+      font-family: 'Cairo', sans-serif;
+    }
+    #closeModalBtn {
+      position: absolute;
+      left: 12px;
+      top: 12px;
+      background: none;
+      border: none;
+      color: #00fff7;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    #changePassModal button {
+      width: auto;
+      min-width: 120px;
+      margin: 0 8px;
+      font-family: 'Cairo', sans-serif;
+    }
+    /* Medicine Market Styles */
+    #market-section {
+      margin: 50px auto 0 auto;
+      max-width: 1000px;
+      width: 100%;
+    }
+    #marketGrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 32px;
+      margin-top: 20px;
+    }
+    .medicine-card {
+      background: #002f2f;
+      border-radius: 16px;
+      box-shadow: 0 0 16px #00fff799;
+      padding: 18px 12px 16px 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .medicine-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px #00fff7dd;
+    }
+    .medicine-card img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 0 10px #00fff7cc;
+      background: #fff;
+    }
+    .medicine-name {
+      margin: 14px 0 8px 0;
+      font-size: 1.15rem;
+      color: #00fff7;
+      font-weight: 700;
+      text-align: center;
+    }
+    .medicine-price {
+      font-size: 1.1rem;
+      color: #aaf0f0;
+      margin-bottom: 10px;
+    }
+    .add-to-cart-btn {
+      width: 90%;
+      font-size: 1.1rem;
+      background: linear-gradient(135deg, #00bcd4, #00fff7);
+      border: none;
+      padding: 8px 0;
+      border-radius: 8px;
+      color: #002f2f;
+      font-weight: bold;
+      cursor: pointer;
       transition: all 0.3s;
     }
-    #backToMainBtn:hover {
-      background: linear-gradient(135deg, #888, #aaa);
+    .add-to-cart-btn:hover {
+      box-shadow: 0 0 15px #00fff7;
     }
-
+    /* Cart Icon */
+    .cart-icon {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #00fff7;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 20px #00fff7;
+      cursor: pointer;
+      z-index: 100;
+      font-size: 1.5rem;
+    }
+    .cart-count {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background: #ff4081;
+      color: white;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+    @media (max-width: 1200px) {
+      #mainBox {
+        max-width: 98vw;
+        padding: 20px 2vw 20px 2vw;
+      }
+    }
     @media (max-width: 900px) {
-      #patientFormBox {
-        padding: 30px 20px;
+      #mainBox {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 0 10px 0;
+      }
+      #authCenter {
+        justify-content: center;
+      }
+      #marketGrid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       }
     }
     @media (max-width: 600px) {
-      #patientFormBox {
-        padding: 25px 15px;
+      #topBar .bar-content { padding: 10px 5px; }
+      #changePassModal .modal-content { min-width: 90vw; }
+      #mainBox { padding: 10px 0 10px 0; }
+      #authForm { padding: 22px 6vw 18px 6vw; }
+      #authForm input[type="email"],
+      #authForm input[type="password"] {
+        margin-right: 0;
+        margin-left: 0;
       }
-      .form-section h1 {
-        font-size: 1.5rem;
+      #authCenter { justify-content: center; }
+      #marketGrid {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+    }
+    @media (max-width: 480px) {
+      #marketGrid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
-</head>
+  <script src="https://apis.google.com/_/scs/abc-static/_/js/k=gapi.lb.ar.geQ2MSC8h8U.O/m=gapi_iframes/rt=j/sv=1/d=1/ed=1/rs=AHpOoo9X0i60BRl87P2jp0GahTXbFWoGhQ/cb=gapi.loaded_0?le=scs" async=""></script><script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+<script src="https://apis.google.com/js/api.js?onload=__iframefcb213860" type="text/javascript" charset="UTF-8" gapi_processed="true"></script></head>
 <body>
-<div id="bubbles-bg"></div>
-<div id="glow-overlay"></div>
+<div id="bubbles-bg"><div class="bubble" style="width: 65.2089px; height: 65.2089px; left: 54.7449vw; animation-duration: 15.2514s; animation-delay: 6.39517s;"></div><div class="bubble bubble2" style="width: 87.3528px; height: 87.3528px; left: 47.0741vw; animation-duration: 27.9116s; animation-delay: 2.98625s;"></div><div class="bubble" style="width: 113.534px; height: 113.534px; left: 24.9649vw; animation-duration: 24.0094s; animation-delay: 3.8913s;"></div><div class="bubble" style="width: 50.7964px; height: 50.7964px; left: 62.916vw; animation-duration: 24.6961s; animation-delay: 13.6066s;"></div><div class="bubble" style="width: 77.6721px; height: 77.6721px; left: 79.605vw; animation-duration: 14.6053s; animation-delay: 0.372336s;"></div><div class="bubble bubble2" style="width: 105.05px; height: 105.05px; left: 64.7959vw; animation-duration: 17.7263s; animation-delay: 1.85268s;"></div><div class="bubble" style="width: 55.7469px; height: 55.7469px; left: 75.5752vw; animation-duration: 15.3666s; animation-delay: 11.2218s;"></div><div class="bubble bubble2" style="width: 57.7898px; height: 57.7898px; left: 19.2417vw; animation-duration: 24.6571s; animation-delay: 5.43439s;"></div><div class="bubble bubble2" style="width: 64.665px; height: 64.665px; left: 89.6606vw; animation-duration: 14.2044s; animation-delay: 13.3682s;"></div><div class="bubble bubble2" style="width: 81.9032px; height: 81.9032px; left: 70.3876vw; animation-duration: 18.0659s; animation-delay: 1.72619s;"></div><div class="bubble" style="width: 49.0332px; height: 49.0332px; left: 49.47vw; animation-duration: 18.848s; animation-delay: 9.9986s;"></div><div class="bubble" style="width: 66.1821px; height: 66.1821px; left: 85.9319vw; animation-duration: 25.7885s; animation-delay: 13.5632s;"></div><div class="bubble bubble2" style="width: 54.9353px; height: 54.9353px; left: 14.1803vw; animation-duration: 15.4241s; animation-delay: 11.7626s;"></div><div class="bubble bubble2" style="width: 116.152px; height: 116.152px; left: 96.5688vw; animation-duration: 18.8868s; animation-delay: 8.57345s;"></div><div class="bubble bubble2" style="width: 72.8963px; height: 72.8963px; left: 90.3464vw; animation-duration: 16.9492s; animation-delay: 8.53095s;"></div><div class="bubble bubble2" style="width: 87.2155px; height: 87.2155px; left: 58.8494vw; animation-duration: 23.9433s; animation-delay: 2.43257s;"></div><div class="bubble" style="width: 58.6243px; height: 58.6243px; left: 97.2385vw; animation-duration: 25.3861s; animation-delay: 13.0839s;"></div><div class="bubble bubble2" style="width: 69.5951px; height: 69.5951px; left: 65.485vw; animation-duration: 26.9694s; animation-delay: 2.57641s;"></div></div>
+<div id="glow-overlay" style="background: radial-gradient(circle at 804px 46px, rgba(0, 255, 247, 0.2) 0%, transparent 15%);"></div>
 
-<!-- Top bar (hidden by default) -->
-<div id="topBar">
-  <div id="userInfo">
-    <img id="userAvatar" src="" alt="User Avatar">
-    <span id="userName"></span>
+<!-- Top Bar (hidden by default) -->
+<nav id="topBar" style="display: none;">
+  <div class="bar-content">
+    <img id="userAvatar" src="https://lh3.googleusercontent.com/a/ACg8ocJQ4o9DWvLAMbMNsXNNIyzbvR-CJdheL9P7VScRkW-41jK24zQF=s96-c" alt="User Avatar">
+    <span id="userEmail">jopokj5@gmail.com</span>
+    <button id="changePassBtn" type="button">تغيير كلمة المرور</button>
+    <button id="signOutBtn" type="button">تسجيل الخروج</button>
   </div>
-  <button id="signOutBtn">تسجيل الخروج</button>
-</div>
+</nav>
 
-<!-- Auth Container -->
-<div id="authContainer">
-  <div id="authBox">
-    <h2>مرحباً بك في Healthy Parental</h2>
-    <div id="loginForm">
-      <input type="email" id="loginEmail" class="auth-input" placeholder="البريد الإلكتروني">
-      <input type="password" id="loginPassword" class="auth-input" placeholder="كلمة المرور">
-      <button id="loginBtn" class="auth-btn">تسجيل الدخول</button>
-      <button id="googleBtn" class="auth-btn">تسجيل الدخول بـ Google</button>
-      <p style="margin-top: 20px;">
-        ليس لديك حساب؟ 
-        <span id="showRegisterForm" style="color: #00fff7; cursor: pointer; text-decoration: underline;">سجل هنا</span>
-      </p>
-    </div>
-    
-    <div id="registerForm" style="display: none;">
-      <input type="text" id="registerName" class="auth-input" placeholder="الاسم الكامل">
-      <input type="email" id="registerEmail" class="auth-input" placeholder="البريد الإلكتروني">
-      <input type="password" id="registerPassword" class="auth-input" placeholder="كلمة المرور">
-      <button id="registerBtn" class="auth-btn">إنشاء حساب جديد</button>
-      <p style="margin-top: 20px;">
-        لديك حساب؟ 
-        <span id="showLoginForm" style="color: #00fff7; cursor: pointer; text-decoration: underline;">سجل دخول</span>
-      </p>
-    </div>
+<!-- Change Password Modal -->
+<div id="changePassModal">
+  <div class="modal-content">
+    <button id="closeModalBtn" title="إغلاق">×</button>
+    <h3>تغيير كلمة المرور</h3>
+    <p>أدخل كلمة المرور الجديدة:</p>
+    <input type="password" id="newPasswordInput" placeholder="كلمة مرور جديدة" minlength="6" required="">
+    <div id="changePassMsg" style="color:#ff8080;min-height:18px;margin-bottom:10px;"></div>
+    <button id="saveNewPassBtn" type="button">حفظ</button>
   </div>
 </div>
 
-<!-- Choose Role Page -->
-<div id="chooseRolePage">
-  <h2>اختر نوع الحساب</h2>
-  <div style="display:flex; flex-direction:column; align-items:center; gap:40px;">
-    <div class="role-option">
-      <img src="https://cdn-icons-png.flaticon.com/512/6073/6073873.png" alt="دكتور">
-      <button id="chooseDoctorBtn" class="role-btn">دكتور</button>
-    </div>
-    <div class="role-option">
-      <img src="https://cdn-icons-png.flaticon.com/512/2922/2922510.png" alt="مريض">
-      <button id="choosePatientBtn" class="role-btn">مريض</button>
-    </div>
-  </div>
-</div>
-
-<!-- Main Content (Doctor Dashboard) -->
-<header>
-  <h1>Healthy Parental</h1>
-</header>
-<main>
-  <section class="content-with-images">
-    <div class="content-card">
-      <img src="https://cdn-icons-png.flaticon.com/512/2785/2785482.png" alt="Medical Care">
-      <h3>الرعاية الطبية المتقدمة</h3>
-      <p>نقدم أفضل خدمات الرعاية الصحية للأطفال والعائلات مع فريق طبي متخصص ومؤهل.</p>
-    </div>
-    
-    <div class="content-card">
-      <img src="https://cdn-icons-png.flaticon.com/512/2785/2785729.png" alt="Emergency">
-      <h3>خدمة الطوارئ 24/7</h3>
-      <p>متوفرون على مدار الساعة لتقديم الرعاية العاجلة والاستشارات الطبية الفورية.</p>
-    </div>
-    
-    <div class="content-card">
-      <img src="https://cdn-icons-png.flaticon.com/512/2785/2785471.png" alt="Consultation">
-      <h3>استشارات طبية</h3>
-      <p>احجز موعدك للحصول على استشارة طبية شاملة مع أطبائنا المتخصصين.</p>
-    </div>
-  </section>
-</main>
-
-<!-- Patient Form Page -->
-<div id="patientPage">
-  <div id="patientFormBox">
-    <form id="patientForm">
-      <!-- Personal Information -->
-      <div class="form-section">
-        <h1>📝 المعلومات الشخصية</h1>
-        
-        <div class="form-group">
-          <label for="full_name">الاسم الكامل</label>
-          <input type="text" id="full_name" name="full_name" placeholder="أحمد محمد علي">
-        </div>
-        
-        <div class="form-group">
-          <label for="birth_date">تاريخ الميلاد</label>
-          <input type="date" id="birth_date" name="birth_date">
-        </div>
-        
-        <div class="form-group">
-          <label for="gender">الجنس</label>
-          <select id="gender" name="gender">
-            <option>ذكر</option>
-            <option>أنثى</option>
-          </select>
-        </div>
-        
-        <div class="form-group">
-          <label for="phone">رقم الهاتف</label>
-          <input type="tel" id="phone" name="phone" placeholder="+966 50 123 4567">
-        </div>
-        
-        <div class="form-group">
-          <label for="address">العنوان</label>
-          <input type="text" id="address" name="address" placeholder="الرياض، المملكة العربية السعودية">
-        </div>
-        
-        <div class="form-group">
-          <label for="email">البريد الإلكتروني (اختياري)</label>
-          <input type="email" id="email" name="email" placeholder="example@gmail.com">
-        </div>
-      </div>
-      
-      <hr>
-      
-      <!-- Booking Information -->
-      <div class="form-section">
-        <h1>📅 معلومات الحجز</h1>
-        
-        <div class="form-group">
-          <label for="appointment_date">تاريخ الموعد</label>
-          <input type="date" id="appointment_date" name="appointment_date">
-        </div>
-        
-        <div class="form-group">
-          <label for="preferred_time">الوقت المفضل</label>
-          <input type="time" id="preferred_time" name="preferred_time">
-        </div>
-        
-        <div class="form-group">
-          <label for="visit_type">نوع الزيارة</label>
-          <select id="visit_type" name="visit_type">
-            <option>فحص روتيني</option>
-            <option>متابعة</option>
-            <option>حالة طارئة</option>
-          </select>
-        </div>
-      </div>
-      
-      <hr>
-      
-      <!-- Medical Information -->
-      <div class="form-section">
-        <h1>🩺 المعلومات الطبية الأساسية</h1>
-        
-        <div class="form-group">
-          <label for="main_complaint">الشكوى الرئيسية (سبب الزيارة)</label>
-          <textarea id="main_complaint" name="main_complaint" placeholder="مثال: ألم في الصدر منذ أسبوع"></textarea>
-        </div>
-        
-        <div class="form-group">
-          <label for="illness_history">تاريخ المرض الحالي</label>
-          <textarea id="illness_history" name="illness_history" placeholder="مثال: بدأ الألم منذ 3 أيام"></textarea>
-        </div>
-        
-        <div class="form-group">
-          <label for="chronic_diseases">الأمراض المزمنة</label>
-          <textarea id="chronic_diseases" name="chronic_diseases" placeholder="مثال: ضغط الدم، السكري"></textarea>
-        </div>
-        
-        <div class="form-group">
-          <label for="drug_allergy">الحساسية من الأدوية</label>
-          <textarea id="drug_allergy" name="drug_allergy" placeholder="لا يوجد أو قائمة الأدوية"></textarea>
-        </div>
-        
-        <div class="form-group">
-          <label for="current_medication">الأدوية الحالية</label>
-          <textarea id="current_medication" name="current_medication" placeholder="مثال: أسبرين 81 ملغ"></textarea>
-        </div>
-      </div>
-      
-      <button type="submit" id="submitPatientBtn">إرسال المعلومات</button>
-      <button type="button" id="backToMainBtn">العودة للرئيسية</button>
+<!-- Main Box for all content -->
+<div id="mainBox">
+  <div id="authCenter" style="display: flex;">
+    <form id="authForm">
+      <h2>تسجيل الدخول</h2>
+      <label for="email">البريد الإلكتروني</label>
+      <input type="email" id="email" placeholder="example@mail.com" required="">
+      <label for="password">كلمة المرور</label>
+      <input type="password" id="password" placeholder="••••••••" required="">
+      <button id="signInBtn" type="button">تسجيل الدخول</button>
+      <button id="signUpBtn" type="button">إنشاء حساب</button>
+      <div class="or-divider">أو</div>
+      <button id="googleSignInBtn" type="button">
+        <img src="" alt="Google">
+        <span>الدخول عبر Google</span>
+      </button>
+      <div id="message"></div>
     </form>
   </div>
+
+  <!-- Choose Role Page (hidden by default) -->
+  <div id="chooseRolePage" style="display: none; flex-direction: column; align-items: center; justify-content: center; min-height: 400px;">
+    <h2 style="color:#00fff7; margin-bottom:30px; font-family:'Cairo',sans-serif;">اختر نوع الحساب</h2>
+    <div style="display:flex; flex-direction:column; align-items:center; gap:40px;">
+      <div style="display:flex; flex-direction:column; align-items:center;">
+        <img src="https://cdn-icons-png.flaticon.com/512/6073/6073873.png" alt="دكتور" style="width:120px; height:120px; border-radius:50%; box-shadow:0 0 20px #00fff7aa; margin-bottom:10px; background:#fff;">
+        <button id="chooseDoctorBtn" style="width:180px; font-size:1.3rem; margin-bottom:0;">دكتور</button>
+      </div>
+      <div style="display:flex; flex-direction:column; align-items:center;">
+        <img src="https://cdn-icons-png.flaticon.com/512/2922/2922510.png" alt="مريض" style="width:120px; height:120px; border-radius:50%; box-shadow:0 0 20px #00fff7aa; margin-bottom:10px; background:#fff;">
+        <button id="choosePatientBtn" style="width:180px; font-size:1.3rem;">مريض</button>
+      </div>
+    </div>
+  </div>
+
+  <header class="">
+    <h1>Healthy Parental</h1>
+  </header>
+  <main class="">
+    <section class="content-with-images">
+      <div class="side-column">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&amp;fit=crop&amp;w=500&amp;q=90">
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&amp;fit=crop&amp;w=500&amp;q=90">
+      </div>
+      <div class="center-text">
+        Good health is essential for a happy life. Maintaining a balanced diet, regular exercise, and sufficient rest can improve your well-being and energy.
+      </div>
+      <div class="side-column">
+        <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&amp;fit=crop&amp;w=500&amp;q=90">
+        <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&amp;fit=crop&amp;w=500&amp;q=90">
+      </div>
+    </section>
+
+    <!-- Medicine Market Section -->
+    <section id="market-section" style="margin: 50px auto 0 auto; max-width: 1000px;">
+      <h2 style="color:#00fff7; text-align:center; margin-bottom:30px; font-family:'Cairo',sans-serif;">سوق الأدوية</h2>
+      <div style="text-align:center; margin-bottom:20px;">
+        <label for="currencySelect" style="font-size:1.1rem; color:#aaf0f0;">اختر العملة:</label>
+        <select id="currencySelect" style="font-size:1.1rem; border-radius:8px; padding:4px 12px; margin-right:8px; background:#002f2f; color:#e0f7f7; border:1px solid #00fff7;">
+          <option value="egp">جنيه مصري (EGP)</option>
+          <option value="usd">دولار أمريكي (USD)</option>
+        </select>
+      </div>
+      <div id="marketGrid"><div class="medicine-card">
+        <img src="https://masterapi.witheldokan.com/storage/seif-pharmacies/uploads/171137.webp" alt="بانادول إكسترا">
+        <div class="medicine-name">بانادول إكسترا</div>
+        <div class="medicine-price">30 جنيه</div>
+        <button class="add-to-cart-btn">إضافة للسلة</button>
+      </div><div class="medicine-card">
+        <img src="" alt="كونجستال">
+        <div class="medicine-name">كونجستال</div>
+        <div class="medicine-price">27 جنيه</div>
+        <button class="add-to-cart-btn">إضافة للسلة</button>
+      </div><div class="medicine-card">
+        <img src="" alt="فلورست">
+        <div class="medicine-name">فلورست</div>
+        <div class="medicine-price">18 جنيه</div>
+        <button class="add-to-cart-btn">إضافة للسلة</button>
+      </div><div class="medicine-card">
+        <img src="" alt="أوجمنتين 1 جم">
+        <div class="medicine-name">أوجمنتين 1 جم</div>
+        <div class="medicine-price">120 جنيه</div>
+        <button class="add-to-cart-btn">إضافة للسلة</button>
+      </div><div class="medicine-card">
+        <img src="" alt="كتافلام 50 مجم">
+        <div class="medicine-name">كتافلام 50 مجم</div>
+        <div class="medicine-price">45 جنيه</div>
+        <button class="add-to-cart-btn">إضافة للسلة</button>
+      </div><div class="medicine-card">
+        <img src=""alt="باراسيتامول">
+        <div class="medicine-name">باراسيتامول</div>
+        <div class="medicine-price">12 جنيه</div>
+        <button class="add-to-cart-btn">إضافة للسلة</button> 
+      </div><div class="medicine-card">
+        <img src="" alt="أموكسيل 500 مجم">
+        <div class="medicine-name">أموكسيل 500 مجم</div>
+        <div class="medicine-price">35 جنيه</div>
+        <button class="add-to-cart-btn">إضافة للسلة</button>
+      </div><div class="medicine-card">
+        <img src="" alt="سبترين DS">
+        <div class="medicine-name">سبترين DS</div>
+        <div class="medicine-price">20 جنيه</div>
+        <button class="add-to-cart-btn">إضافة للسلة</button>
+      </div></div>
+    </section>
+  </main>
+</div>
+
+<!-- Cart Icon -->
+<div class="cart-icon">
+  🛒
+  <span class="cart-count">0</span>
 </div>
 
 <script type="module">
-  // Import Firebase modules
-  import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js';
-  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js';
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
+  import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, signOut, GoogleAuthProvider, signInWithPopup, updatePassword } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
 
-  // Firebase configuration
   const firebaseConfig = {
-    apiKey: "AIzaSyDGpAHia_wEmrhnmYjrPf1n1TrAzwEMiAI",
-    authDomain: "messageemeapp.firebaseapp.com",
-    databaseURL: "https://messageemeapp-default-rtdb.europe-west1.firebasedatabase.app",
-    projectId: "messageemeapp",
-    storageBucket: "messageemeapp.appspot.com",
-    messagingSenderId: "278680662267",
-    appId: "1:278680662267:web:cb9d37dd6ce5bf6cd222b8"
+    apiKey: "AIzaSyAtb4EIuHEZF-IoAWYiq3zE-qYuUvP4Wgo",
+    authDomain: "sign-in-properly.firebaseapp.com",
+    projectId: "sign-in-properly",
+    storageBucket: "sign-in-properly.appspot.com",
+    messagingSenderId: "431658776093",
+    appId: "1:431658776093:web:df81018d7f4b76d74bf8f4",
+    measurementId: "G-WC4VPBD4T4"
   };
 
-  // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
-  const provider = new GoogleAuthProvider();
 
-  // DOM elements
-  const authContainer = document.getElementById('authContainer');
-  const chooseRolePage = document.getElementById('chooseRolePage');
-  const patientPage = document.getElementById('patientPage');
-  const topBar = document.getElementById('topBar');
+  // DOM Elements
+  const emailInput = document.getElementById('email');
+  const passInput = document.getElementById('password');
+  const signInBtn = document.getElementById('signInBtn');
+  const signUpBtn = document.getElementById('signUpBtn');
+  const googleSignInBtn = document.getElementById('googleSignInBtn');
+  const message = document.getElementById('message');
+  const authCenter = document.getElementById('authCenter');
   const header = document.querySelector('header');
   const main = document.querySelector('main');
-  const loginForm = document.getElementById('loginForm');
-  const registerForm = document.getElementById('registerForm');
-  
-  const loginBtn = document.getElementById('loginBtn');
-  const registerBtn = document.getElementById('registerBtn');
-  const googleBtn = document.getElementById('googleBtn');
-  const signOutBtn = document.getElementById('signOutBtn');
-  const showRegisterForm = document.getElementById('showRegisterForm');
-  const showLoginForm = document.getElementById('showLoginForm');
-  const chooseDoctorBtn = document.getElementById('chooseDoctorBtn');
-  const choosePatientBtn = document.getElementById('choosePatientBtn');
-  const backToMainBtn = document.getElementById('backToMainBtn');
-  
+  const topBar = document.getElementById('topBar');
+  const userEmailSpan = document.getElementById('userEmail');
   const userAvatar = document.getElementById('userAvatar');
-  const userName = document.getElementById('userName');
+  const signOutBtn = document.getElementById('signOutBtn');
+  const changePassBtn = document.getElementById('changePassBtn');
+
+  // Modal elements
+  const changePassModal = document.getElementById('changePassModal');
+  const closeModalBtn = document.getElementById('closeModalBtn');
+  const saveNewPassBtn = document.getElementById('saveNewPassBtn');
+  const newPasswordInput = document.getElementById('newPasswordInput');
+  const changePassMsg = document.getElementById('changePassMsg');
+
+  // Medicine Market Data
+  const medicines = [
+    {
+      name: "بانادول إكسترا",
+      img: "https://masterapi.witheldokan.com/storage/seif-pharmacies/uploads/171137.webp",
+      egp: 30,
+      usd: 0.65
+    },
+    {
+      name: "كونجستال",
+      img: "",
+      egp: 27,
+      usd: 0.58
+    },
+    {
+      name: "فلورست",
+      img: "",
+      egp: 18,
+      usd: 0.39
+    },
+    {
+      name: "أوجمنتين 1 جم",
+      img: "",
+      egp: 120,
+      usd: 2.6
+    },
+    {
+      name: "كتافلام 50 مجم",
+      img: "",
+      egp: 45,
+      usd: 0.97
+    },
+    {
+      name: "باراسيتامول",
+      img: "",
+      egp: 12,
+      usd: 0.26
+    },
+    {
+      name: "أموكسيل 500 مجم",
+      img: "",
+      egp: 35,
+      usd: 0.76
+    },
+    {
+      name: "سبترين DS",
+      img: "",
+      egp: 20,
+      usd: 0.43
+    }
+  ];
+
+  // Cart functionality
+  let cartItems = 0;
+  const cartCount = document.querySelector('.cart-count');
+  const cartIcon = document.querySelector('.cart-icon');
+
+  // Currency selection
+  const currencySelect = document.getElementById('currencySelect');
+  let currentCurrency = 'egp';
+
+  // Render medicine market
+  function renderMarket(currency = "egp") {
+    const grid = document.getElementById('marketGrid');
+    if (!grid) return;
+    grid.innerHTML = '';
+    
+    medicines.forEach(med => {
+      const price = currency === "egp" ? `${med.egp} جنيه` : `${med.usd.toFixed(2)} $`;
+      
+      const card = document.createElement('div');
+      card.className = 'medicine-card';
+      
+      card.innerHTML = `
+        <img src="${med.img}" alt="${med.name}">
+        <div class="medicine-name">${med.name}</div>
+        <div class="medicine-price">${price}</div>
+        <button class="add-to-cart-btn">إضافة للسلة</button>
+      `;
+      
+      // Add click event to the button
+      const addBtn = card.querySelector('.add-to-cart-btn');
+      addBtn.addEventListener('click', () => {
+        cartItems++;
+        cartCount.textContent = cartItems;
+        // Add animation
+        cartIcon.style.transform = 'scale(1.2)';
+        setTimeout(() => {
+          cartIcon.style.transform = 'scale(1)';
+        }, 300);
+      });
+      
+      grid.appendChild(card);
+    });
+  }
+
+  // Currency change handler
+  if (currencySelect) {
+    currencySelect.addEventListener('change', e => {
+      currentCurrency = e.target.value;
+      renderMarket(currentCurrency);
+    });
+  }
+
+  // Initialize market
+  renderMarket();
+
+  // Avatar function
+  function getAvatar(email, photoURL) {
+    if (photoURL) return photoURL;
+    const md5 = email => window.CryptoJS.MD5(email.trim().toLowerCase()).toString();
+    return `https://www.gravatar.com/avatar/${md5(email)}?d=identicon`;
+  }
+
+  // Sign in with email/password
+  signInBtn.addEventListener('click', () => {
+    message.textContent = '';
+    signInWithEmailAndPassword(auth, emailInput.value, passInput.value)
+      .then(() => showContent())
+      .catch(err => message.textContent = err.message);
+  });
+
+  // Sign up with email/password
+  signUpBtn.addEventListener('click', () => {
+    message.textContent = '';
+    createUserWithEmailAndPassword(auth, emailInput.value, passInput.value)
+      .then(() => showContent())
+      .catch(err => message.textContent = err.message);
+  });
+
+  // Google Sign-In
+  if (googleSignInBtn) {
+    googleSignInBtn.onclick = async () => {
+      message.textContent = '';
+      const provider = new GoogleAuthProvider();
+      try {
+        await signInWithPopup(auth, provider);
+        showContent();
+      } catch (err) {
+        message.textContent = err.message;
+      }
+    };
+  }
+
+  // Show content after login
+  function showContent() {
+    authCenter.style.display = 'none';
+    document.getElementById('chooseRolePage').style.display = 'flex';
+    header.classList.remove('visible');
+    main.classList.remove('visible');
+    topBar.style.display = 'block';
+
+    const user = auth.currentUser;
+    if (user) {
+      userEmailSpan.textContent = user.email || '';
+      userAvatar.src = getAvatar(user.email || '', user.photoURL || '');
+    }
+  }
+
+  // Role selection logic
+  document.getElementById('chooseDoctorBtn').onclick = function() {
+    document.getElementById('chooseRolePage').style.display = 'none';
+    header.classList.add('visible');
+    main.classList.add('visible');
+  };
+  document.getElementById('choosePatientBtn').onclick = function() {
+    document.getElementById('chooseRolePage').style.display = 'none';
+    header.classList.add('visible');
+    main.classList.add('visible');
+  };
+
+  // Sign out
+  if (signOutBtn) {
+    signOutBtn.onclick = () => {
+      signOut(auth).then(() => {
+        topBar.style.display = 'none';
+        header.classList.remove('visible');
+        main.classList.remove('visible');
+        authCenter.style.display = 'flex';
+        document.getElementById('authForm').reset();
+        document.getElementById('chooseRolePage').style.display = 'none';
+        cartItems = 0;
+        cartCount.textContent = '0';
+      });
+    };
+  }
+
+  // Change password modal logic
+  if (changePassBtn) {
+    changePassBtn.onclick = () => {
+      changePassMsg.textContent = '';
+      newPasswordInput.value = '';
+      changePassModal.style.display = 'flex';
+      newPasswordInput.focus();
+    };
+  }
+  if (closeModalBtn) {
+    closeModalBtn.onclick = () => {
+      changePassModal.style.display = 'none';
+    };
+  }
+  if (saveNewPassBtn) {
+    saveNewPassBtn.onclick = async () => {
+      const user = auth.currentUser;
+      const newPass = newPasswordInput.value;
+      changePassMsg.textContent = '';
+      if (!newPass || newPass.length < 6) {
+        changePassMsg.textContent = 'كلمة المرور يجب أن تكون 6 أحرف أو أكثر.';
+        return;
+      }
+      try {
+        await updatePassword(user, newPass);
+        changePassMsg.style.color = "#00fff7";
+        changePassMsg.textContent = "تم تغيير كلمة المرور بنجاح!";
+        setTimeout(() => {
+          changePassModal.style.display = 'none';
+          changePassMsg.style.color = "#ff8080";
+        }, 1200);
+      } catch (err) {
+        if (err.code === "auth/requires-recent-login") {
+          changePassMsg.textContent = "يجب تسجيل الدخول مجددًا لتغيير كلمة المرور.";
+        } else {
+          changePassMsg.textContent = err.message;
+        }
+      }
+    };
+  }
+
+  // Close modal on outside click
+  window.onclick = function(event) {
+    if (event.target === changePassModal) {
+      changePassModal.style.display = "none";
+    }
+  };
+
+  // Glow mouse effect
+  const glowOverlay = document.getElementById('glow-overlay');
+  document.addEventListener('mousemove', e => {
+    glowOverlay.style.background = `radial-gradient(circle at ${e.clientX}px ${e.clientY}px, rgba(0,255,247,0.2) 0%, transparent 15%)`;
+  });
 
   // Bubbles animation
   const bubblesBg = document.getElementById('bubbles-bg');
@@ -660,105 +944,7 @@
     });
   }
   for (let i = 0; i < 18; i++) createBubble();
+</script>
 
-  // Glow mouse effect
-  const glowOverlay = document.getElementById('glow-overlay');
-  document.addEventListener('mousemove', e => {
-    glowOverlay.style.background = `radial-gradient(circle at ${e.clientX}px ${e.clientY}px, rgba(0,255,247,0.2) 0%, transparent 15%)`;
-  });
 
-  // Auth form switching
-  showRegisterForm.onclick = () => {
-    loginForm.style.display = 'none';
-    registerForm.style.display = 'block';
-  };
-  showLoginForm.onclick = () => {
-    registerForm.style.display = 'none';
-    loginForm.style.display = 'block';
-  };
-
-  // Helper functions
-  function getAvatar(email, photoURL) {
-    if (photoURL) return photoURL;
-    const firstLetter = email.charAt(0).toUpperCase();
-    return `https://ui-avatars.com/api/?name=${firstLetter}&background=00fff7&color=002f2f&size=40`;
-  }
-
-  function showChooseRole() {
-    authContainer.style.display = 'none';
-    chooseRolePage.style.display = 'flex';
-  }
-
-  function showDoctorDashboard() {
-    chooseRolePage.style.display = 'none';
-    patientPage.style.display = 'none';
-    header.classList.add('visible');
-    main.classList.add('visible');
-  }
-
-  function showPatientForm() {
-    chooseRolePage.style.display = 'none';
-    header.classList.remove('visible');
-    main.classList.remove('visible');
-    patientPage.style.display = 'flex';
-  }
-
-  // Authentication
-  loginBtn.onclick = async () => {
-    const email = document.getElementById('loginEmail').value;
-    const password = document.getElementById('loginPassword').value;
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-    } catch (error) {
-      alert('خطأ في تسجيل الدخول: ' + error.message);
-    }
-  };
-
-  registerBtn.onclick = async () => {
-    const name = document.getElementById('registerName').value;
-    const email = document.getElementById('registerEmail').value;
-    const password = document.getElementById('registerPassword').value;
-    try {
-      await createUserWithEmailAndPassword(auth, email, password);
-    } catch (error) {
-      alert('خطأ في إنشاء الحساب: ' + error.message);
-    }
-  };
-
-  googleBtn.onclick = async () => {
-    try {
-      await signInWithPopup(auth, provider);
-    } catch (error) {
-      alert('خطأ في تسجيل الدخول بـ Google: ' + error.message);
-    }
-  };
-
-  // Role selection
-  chooseDoctorBtn.onclick = showDoctorDashboard;
-  choosePatientBtn.onclick = showPatientForm;
-  backToMainBtn.onclick = showDoctorDashboard;
-
-  // Sign out
-  signOutBtn.onclick = () => {
-    signOut(auth).then(() => {
-      topBar.style.display = 'none';
-      header.classList.remove('visible');
-      main.classList.remove('visible');
-      chooseRolePage.style.display = 'none';
-      patientPage.style.display = 'none';
-      authContainer.style.display = 'flex';
-    });
-  };
-
-  // Patient form submission
-  document.getElementById('patientForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    alert('تم إرسال معلوماتك بنجاح! سيتصل بك الفريق الطبي قريباً.');
-    this.reset();
-  });
-
-  // Auth state observer
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      topBar.style.display = 'flex';
-      userName.textConte
+<iframe ng-non-bindable="" frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" tabindex="-1" vspace="0" width="100%" aria-hidden="true" id="I0_1756148463273" name="I0_1756148463273" src="https://sign-in-properly.firebaseapp.com/__/auth/iframe?apiKey=AIzaSyAtb4EIuHEZF-IoAWYiq3zE-qYuUvP4Wgo&amp;appName=%5BDEFAULT%5D&amp;v=10.12.4&amp;eid=p&amp;usegapi=1&amp;jsh=m%3B%2F_%2Fscs%2Fabc-static%2F_%2Fjs%2Fk%3Dgapi.lb.ar.geQ2MSC8h8U.O%2Fd%3D1%2Frs%3DAHpOoo9X0i60BRl87P2jp0GahTXbFWoGhQ%2Fm%3D__features__#id=I0_1756148463273&amp;_gfid=I0_1756148463273&amp;parent=https%3A%2F%2Fele-hospital.vercel.app&amp;pfname=&amp;rpctoken=53830830" style="position: absolute; top: -100px; width: 1px; height: 1px;"></iframe></body></html>
